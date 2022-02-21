@@ -1,18 +1,9 @@
 import styles from './GNB.module.css';
 import { getScrollHeight } from '../../utils/height';
-import { LOGO } from './logo';
 
-const USER_ITEMS = [
-  '로그인',
-  '회원가입',
-  '꾸까 고객센터',
-  '기업제휴',
-];
+const USER_ITEMS = ['로그인', '회원가입', '꾸까 고객센터', '기업제휴'];
 
-const MENU_ITEMS = [
-  '동영상',
-  '플라워클래스',
-];
+const MENU_ITEMS = ['동영상', '플라워클래스'];
 
 const ICON_MENU = [
   {
@@ -22,8 +13,8 @@ const ICON_MENU = [
   {
     srText: '장바구니 보기, 담긴상품 개수: 0',
     className: styles.cart,
-  }
-]
+  },
+];
 
 export default function GNB({ $target }) {
   const $header = document.createElement('header');
@@ -38,7 +29,6 @@ export default function GNB({ $target }) {
   const $logoAnchor = document.createElement('a');
   $logo.className = styles.logo;
   $logoAnchor.href = '/#';
-  $logoAnchor.insertAdjacentHTML('afterbegin', LOGO);
   $logo.appendChild($logoAnchor);
   $wrapper.appendChild($logo);
 
@@ -66,7 +56,7 @@ export default function GNB({ $target }) {
   $nav.appendChild($user);
   $nav.appendChild($menu);
 
-  USER_ITEMS.forEach((menu) => {
+  const userItems = USER_ITEMS.map((menu) => {
     const $li = document.createElement('li');
     const $a = document.createElement('a');
     $a.innerText = menu;
@@ -78,26 +68,49 @@ export default function GNB({ $target }) {
       $a.appendChild($span);
     }
     $li.appendChild($a);
-    $user.appendChild($li);
+    return $li;
   });
+  toggleUserMenu();
 
-  MENU_ITEMS.forEach((menu) => {
+  const menuItems = MENU_ITEMS.map((menu) => {
     const $li = document.createElement('li');
     const $button = document.createElement('button');
     $button.innerText = menu;
     $button.onClick = () => {};
     $li.appendChild($button);
-    $menu.appendChild($li);
+    return $li;
   });
+  moveMenu();
+
+  function toggleUserMenu() {
+    if (window.innerWidth < 1024) {
+      $user.innerHTML = '';
+      return;
+    }
+    userItems.forEach(($one) => $user.appendChild($one));
+  }
+
+  function moveMenu() {
+    if (window.innerWidth < 1024 && getScrollHeight() >= 40) {
+      $menu.innerHTML = '';
+      return;
+    }
+    menuItems.forEach(($one) => $menu.appendChild($one));
+  }
 
   document.addEventListener('scroll', (e) => {
+    moveMenu();
     if (getScrollHeight() >= 40) {
       $header.classList.add(styles.scrolled);
-    } else {
-      $header.classList.remove(styles.scrolled);
+      return;
     }
+    $header.classList.remove(styles.scrolled);
+  });
+
+  window.addEventListener('resize', () => {
+    toggleUserMenu();
+    moveMenu();
   });
 
   $target.appendChild($header);
 }
-
