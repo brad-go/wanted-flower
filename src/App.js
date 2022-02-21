@@ -1,12 +1,9 @@
-import Sample from './modules/Sample/Sample.js';
+import Movie from './modules/Movie/Movie.js';
 
 export default function App({ $target }) {
   this.state = {};
 
-  const sample = new Sample({
+  const movie = new Movie({
     $target,
-    initialState: {
-      //...
-    },
   });
 }
