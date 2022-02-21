@@ -1,4 +1,5 @@
 import Sample from './modules/Sample/Sample.js';
+import Banner from './modules/Banner/Banner.js';
 
 export default function App({ $target }) {
   this.state = {};
@@ -8,5 +9,8 @@ export default function App({ $target }) {
     initialState: {
       //...
     },
+  });
+  const banner = new Banner({
+    $target,
   });
 }
