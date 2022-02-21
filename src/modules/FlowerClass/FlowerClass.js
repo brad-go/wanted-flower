@@ -34,12 +34,17 @@ const listData = [
     price: '299,000원',
     image:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/3/class_2022_home_mob_okfoQzB.jpeg',
+    imagePc:
+      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/3/class_2022_home_web_R0tReO1.jpeg',
     branch: branchData,
+    href: '/class/content/381',
   },
   {
     title: '오아시스 리그(2/21 ~ 2/27)',
     price: '79,000원',
     image:
+      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/106/img_%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4-%EB%A6%AC%EC%8A%A4.jpg',
+    imagePc:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/106/img_%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4-%EB%A6%AC%EC%8A%A4.jpg',
     branch: [
       {
@@ -49,13 +54,17 @@ const listData = [
       },
       ...branchData,
     ],
+    href: '/class/content/401',
   },
   {
     title: '클래식 핸드타이드(2/28 ~ 3/6)',
     price: '79,000원',
     image:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/107/img_%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%95%B8%EB%93%9C%ED%83%80%EC%9D%B4%EB%93%9C.jpg',
+    imagePc:
+      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/107/img_%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%95%B8%EB%93%9C%ED%83%80%EC%9D%B4%EB%93%9C.jpg',
     branch: branchData,
+    href: '/class/content/408',
   },
 ];
 
@@ -78,6 +87,7 @@ export default function Image({ $target }) {
 
   // products
   const $class = listData.map((data, idx) => {
+    // summary
     const $name = document.createElement('a');
     $name.className = styles.name;
     $name.innerText = data.title;
@@ -101,17 +111,32 @@ export default function Image({ $target }) {
     $summary.className = styles.summary;
     $summary.append($name, $price, $branchContainer);
 
-    const $img = document.createElement('img');
-    $img.src = data.image;
+    // thumbnail
+    const $desc = document.createElement('span');
+    $desc.className = styles.desc;
+    $desc.innerText = '매주 새로운 커리큘럼으로 배우는';
+    const $descName = document.createElement('strong');
+    $descName.className = styles.descName;
+    $descName.innerText = '플라워 클래스 자세히 보기';
 
+    const $imgMoblie = document.createElement('img');
+    $imgMoblie.className = styles.imgMobile;
+    $imgMoblie.src = data.image;
+    $imgMoblie.alt = 'flowerClass - moblieImg';
+    const $imgPc = document.createElement('img');
+    $imgPc.className = styles.imgPc;
+    $imgPc.src = data.imagePc;
+    $imgMoblie.alt = 'flowerClass - pcImg';
     const $link = document.createElement('a');
     $link.className = styles.link;
-    $link.appendChild($img);
+    $link.href = data.href;
+    $link.append($imgMoblie, $imgPc, $desc, $descName);
 
     const $thumbnail = document.createElement('div');
     $thumbnail.className = styles.thumbnail;
-    $thumbnail.appendChild($link);
+    $thumbnail.append($link);
 
+    // container
     const $detail = document.createElement('div');
     $detail.className = styles.detail;
     $detail.append($thumbnail, $summary);
@@ -126,9 +151,14 @@ export default function Image({ $target }) {
   $productList.className = styles.productList;
   $productList.append(...$class);
 
+  const $moreLink = document.createElement('a');
+  $moreLink.className = styles.moreLink;
+  $moreLink.href = '/class/';
+  $moreLink.innerText = '더보기';
+
   const $products = document.createElement('div');
   $products.className = styles.products;
-  $products.appendChild($productList);
+  $products.append($productList, $moreLink);
 
   const $flowerClass = document.createElement('section');
   $flowerClass.className = styles.flowerClass;
