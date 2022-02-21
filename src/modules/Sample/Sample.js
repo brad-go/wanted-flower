@@ -1,4 +1,4 @@
-import styles from './sample.module.css';
+import styles from './Sample.module.css';
 
 export default function Sample({ $target, initialState }) {
   const $sample = document.createElement('div');
