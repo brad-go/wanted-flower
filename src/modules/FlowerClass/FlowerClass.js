@@ -86,11 +86,12 @@ export default function Image({ $target }) {
   $header.appendChild($title);
 
   // products
-  const $class = listData.map((data, idx) => {
+  const $class = listData.map((data) => {
     // summary
     const $name = document.createElement('a');
     $name.className = styles.name;
     $name.innerText = data.title;
+    $name.href = data.href;
     const $price = document.createElement('span');
     $price.className = styles.price;
     $price.innerText = data.price;
