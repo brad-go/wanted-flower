@@ -110,6 +110,7 @@ export default function Image({ $target }) {
 
     const $summary = document.createElement('div');
     $summary.className = styles.summary;
+    $summary.classList.add('summaries');
     $summary.append($name, $price, $branchContainer);
 
     // thumbnail
@@ -126,6 +127,7 @@ export default function Image({ $target }) {
     $imgMoblie.alt = 'flowerClass - moblieImg';
     const $imgPc = document.createElement('img');
     $imgPc.className = styles.imgPc;
+    $imgPc.classList.add('imgPcs');
     $imgPc.src = data.imagePc;
     $imgMoblie.alt = 'flowerClass - pcImg';
     const $link = document.createElement('a');
@@ -135,6 +137,7 @@ export default function Image({ $target }) {
 
     const $thumbnail = document.createElement('div');
     $thumbnail.className = styles.thumbnail;
+    $thumbnail.classList.add('imgContainer');
     $thumbnail.append($link);
 
     // container
@@ -179,11 +182,52 @@ export default function Image({ $target }) {
 
   window.addEventListener('load', () => {
     const items = document.getElementsByClassName('items');
+    const thumbnail = document.getElementsByClassName('imgContainer');
+    const summaries = document.getElementsByClassName('summaries');
+
     $prevBtn.addEventListener('click', () => {
-      items[0].before(items[2]);
+      thumbnail[0].style.transform = 'translate(72%, -27.5%) scale(0.45)';
+      thumbnail[2].style.transform = 'translate(-175%, -70%) scale(2.3)';
+      summaries[2].style.opacity = '0';
+      items[1].style.transform = 'translateY(140%)';
+      items[1].style.borderTopColor = 'transparent';
+      setTimeout(() => {
+        thumbnail[0].style.transition = 'none';
+        thumbnail[2].style.transition = 'none';
+        thumbnail[0].style.transform = 'none';
+        thumbnail[2].style.transform = 'none';
+        summaries[0].style.opacity = '1';
+        items[1].style.borderTopColor = '#ececec';
+        items[1].style.transition = 'none';
+        items[1].style.transform = 'none';
+        items[0].before(items[2]);
+      }, 1100);
+      thumbnail[2].style.transition = 'transform 1s ease-in-out';
+      thumbnail[0].style.transition = 'transform 1s ease-in-out';
+      items[1].style.transition = 'transform 1s ease-in-out';
     });
+
     $nextBtn.addEventListener('click', () => {
-      items[2].after(items[0]);
+      thumbnail[1].style.transform = 'translate(-175%, 70%) scale(2.3)';
+      thumbnail[0].style.transform = 'translate(70%, 32%) scale(0.4)';
+      summaries[0].style.opacity = '1';
+      summaries[1].style.opacity = '0';
+      items[2].style.transform = 'translateY(-115%)';
+      items[2].style.borderTopColor = 'transparent';
+      setTimeout(() => {
+        thumbnail[0].style.transition = 'none';
+        thumbnail[0].style.transform = 'none';
+        thumbnail[1].style.transition = 'none';
+        thumbnail[1].style.transform = 'none';
+        summaries[1].style.opacity = '1';
+        items[0].style.borderTopColor = '#ececec';
+        items[2].style.transition = 'none';
+        items[2].style.transform = 'none';
+        items[2].after(items[0]);
+      }, 1000);
+      thumbnail[1].style.transition = 'transform 1s ease-in-out';
+      thumbnail[0].style.transition = 'transform 1s ease-in-out';
+      items[2].style.transition = 'transform 1s ease-in-out';
     });
   });
 
