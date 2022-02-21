@@ -1,0 +1,229 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-family: 'Noto Sans KR', sans-serif, NanumGothic, '나눔고딕', Dotum,
+    '돋움', Helvetica, 'Apple SD Gothic Neo';
+  line-height: 16px;
+  letter-spacing: -0.5px;
+}
+
+a {
+  text-decoration: none;
+  outline-width: 1px;
+  cursor: pointer;
+}
+
+.flowerClass {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* header */
+.products {
+  position: relative;
+  padding: 20px 20px 40px;
+}
+
+.header {
+  padding: 40px 20px 0;
+}
+
+.title {
+  margin: 0;
+  color: #222;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 34px;
+  letter-spacing: -0.33px;
+}
+
+/* products */
+.products {
+  position: relative;
+  padding: 20px 20px 40px;
+}
+
+.productList {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.thumbnail {
+  outline-width: 1px;
+}
+
+.link {
+  display: block;
+}
+
+.item:first-of-type .summary {
+  display: none;
+}
+
+.item:first-of-type .thumbnail img {
+  width: 100%;
+  height: 100%;
+}
+
+.item:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+.item:not(:first-of-type) .detail {
+  position: relative;
+  padding-left: 160px;
+}
+
+.item:not(:first-of-type) .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 144px;
+}
+
+.item:not(:first-of-type) .link img {
+  display: block;
+  width: 100%;
+  height: 102.85px;
+}
+
+.item:last-of-type {
+  margin-top: 20px;
+  border-top: #ececec 1px solid;
+}
+
+/* summary */
+.summary {
+  display: block;
+  height: auto;
+  min-height: 105px;
+  padding: 0;
+  color: #222;
+  letter-spacing: -0.21px;
+}
+
+.name {
+  display: block;
+  margin-top: 1px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+/* branch */
+.branchContainer {
+  position: relative;
+  bottom: inherit;
+  margin-top: 10px;
+}
+
+.branch {
+  display: inline-block;
+  min-width: 52px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  padding: 0 8px;
+  border: 1px solid;
+  border-radius: 10px;
+  background: 0 0;
+  font-size: 10px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  vertical-align: middle;
+}
+
+.branch:hover {
+  text-decoration: underline;
+}
+
+.gwang {
+  border-color: #a27fde;
+  color: #a27fde;
+}
+
+.jam {
+  border-color: #46cfa7;
+  color: #46cfa7;
+}
+
+.wolgye {
+  border-color: #ffa04d;
+  color: #ffa04d;
+}
+
+.guro {
+  border-color: #68a4fe;
+  color: #68a4fe;
+}
+
+.songpa {
+  border-color: #ffcd32;
+  color: #ffcd32;
+}
+
+.dongrae {
+  border-color: #00afe3;
+  color: #00afe3;
+}
+
+@media (min-width: 1024px) {
+  .flowerClass {
+    padding: 0 60px;
+  }
+  .header {
+    padding: 90px 0 0;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.45px;
+  }
+  .products {
+    padding: 40px 0 120px;
+  }
+  .summary {
+    overflow: hidden;
+    width: 100%;
+    height: auto;
+    min-height: none;
+    padding: 0 0 0 20px;
+  }
+  .name {
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+  }
+  .price {
+    margin-top: 5px;
+  }
+  .branchContainer {
+    margin-top: 15px;
+  }
+}

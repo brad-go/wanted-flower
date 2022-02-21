@@ -1,4 +1,5 @@
 import Sample from './modules/Sample/Sample.js';
+import FlowerClass from './modules/FlowerClass/FlowerClass';
 
 export default function App({ $target }) {
   this.state = {};
@@ -9,4 +10,5 @@ export default function App({ $target }) {
       //...
     },
   });
+  const flowerClass = new FlowerClass({ $target });
 }
