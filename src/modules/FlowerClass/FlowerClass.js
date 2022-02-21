@@ -69,7 +69,6 @@ const listData = [
 ];
 
 export default function Image({ $target }) {
-  // header
   const $span = document.createElement('span');
   $span.innerText = '꽃과 함께하는 일상, ';
 
@@ -85,9 +84,7 @@ export default function Image({ $target }) {
   $header.className = styles.header;
   $header.appendChild($title);
 
-  // products
   const itemList = listData.map((data, idx) => {
-    // summary
     const $name = document.createElement('a');
     $name.className = styles.name;
     $name.innerText = data.title;
@@ -193,23 +190,23 @@ export default function Image({ $target }) {
       items[1].style.borderTopColor = 'transparent';
       setTimeout(() => {
         thumbnail[0].style.transition = 'none';
-        thumbnail[2].style.transition = 'none';
         thumbnail[0].style.transform = 'none';
+        thumbnail[2].style.transition = 'none';
         thumbnail[2].style.transform = 'none';
         summaries[0].style.opacity = '1';
-        items[1].style.borderTopColor = '#ececec';
         items[1].style.transition = 'none';
         items[1].style.transform = 'none';
         items[0].before(items[2]);
       }, 1100);
-      thumbnail[2].style.transition = 'transform 1s ease-in-out';
       thumbnail[0].style.transition = 'transform 1s ease-in-out';
+      thumbnail[2].style.transition = 'transform 1s ease-in-out';
+      items[1].style.borderTopColor = '#ececec';
       items[1].style.transition = 'transform 1s ease-in-out';
     });
 
     $nextBtn.addEventListener('click', () => {
-      thumbnail[1].style.transform = 'translate(-175%, 70%) scale(2.3)';
       thumbnail[0].style.transform = 'translate(70%, 32%) scale(0.4)';
+      thumbnail[1].style.transform = 'translate(-175%, 70%) scale(2.3)';
       summaries[0].style.opacity = '1';
       summaries[1].style.opacity = '0';
       items[2].style.transform = 'translateY(-115%)';
@@ -220,13 +217,13 @@ export default function Image({ $target }) {
         thumbnail[1].style.transition = 'none';
         thumbnail[1].style.transform = 'none';
         summaries[1].style.opacity = '1';
-        items[0].style.borderTopColor = '#ececec';
+        items[2].style.borderTopColor = '#ececec';
         items[2].style.transition = 'none';
         items[2].style.transform = 'none';
         items[2].after(items[0]);
       }, 1000);
-      thumbnail[1].style.transition = 'transform 1s ease-in-out';
       thumbnail[0].style.transition = 'transform 1s ease-in-out';
+      thumbnail[1].style.transition = 'transform 1s ease-in-out';
       items[2].style.transition = 'transform 1s ease-in-out';
     });
   });
