@@ -1,12 +1,9 @@
-import Sample from './modules/Sample/Sample.js';
+import GNB from './modules/GNB/GNB.js';
 
 export default function App({ $target }) {
   this.state = {};
 
-  const sample = new Sample({
+  const gnb = new GNB({
     $target,
-    initialState: {
-      //...
-    },
   });
 }
