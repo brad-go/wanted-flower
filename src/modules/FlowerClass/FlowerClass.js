@@ -86,7 +86,7 @@ export default function Image({ $target }) {
   $header.appendChild($title);
 
   // products
-  const $class = listData.map((data) => {
+  const itemList = listData.map((data, idx) => {
     // summary
     const $name = document.createElement('a');
     $name.className = styles.name;
@@ -144,27 +144,48 @@ export default function Image({ $target }) {
 
     const $item = document.createElement('li');
     $item.className = styles.item;
+    $item.classList.add('items');
+    $item.style.order = idx;
     $item.appendChild($detail);
     return $item;
   });
 
   const $productList = document.createElement('ul');
   $productList.className = styles.productList;
-  $productList.append(...$class);
+  $productList.append(...itemList);
 
   const $moreLink = document.createElement('a');
   $moreLink.className = styles.moreLink;
   $moreLink.href = '/class/';
   $moreLink.innerText = '더보기';
 
+  const $prevBtn = document.createElement('button');
+  const $nextBtn = document.createElement('button');
+  $prevBtn.className = styles.prevBtn;
+  $nextBtn.className = styles.nextBtn;
+
+  const $btnContainer = document.createElement('div');
+  $btnContainer.className = styles.btnContainer;
+  $btnContainer.append($nextBtn, $prevBtn);
+
   const $products = document.createElement('div');
   $products.className = styles.products;
-  $products.append($productList, $moreLink);
+  $products.append($productList, $moreLink, $btnContainer);
 
   const $flowerClass = document.createElement('section');
   $flowerClass.className = styles.flowerClass;
   $flowerClass.appendChild($header);
   $flowerClass.appendChild($products);
+
+  window.addEventListener('load', () => {
+    const items = document.getElementsByClassName('items');
+    $prevBtn.addEventListener('click', () => {
+      items[0].before(items[2]);
+    });
+    $nextBtn.addEventListener('click', () => {
+      items[2].after(items[0]);
+    });
+  });
 
   $target.appendChild($flowerClass);
 }
