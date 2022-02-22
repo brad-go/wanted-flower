@@ -1,31 +1,3 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  font-family: 'Noto Sans KR', sans-serif, NanumGothic, '나눔고딕', Dotum,
-    '돋움', Helvetica, 'Apple SD Gothic Neo';
-  line-height: 16px;
-  letter-spacing: -0.5px;
-}
-
-a {
-  color: #222;
-  text-decoration: none;
-  outline-width: 1px;
-  cursor: pointer;
-}
-
-button {
-  all: unset;
-  cursor: pointer;
-}
-
 .flowerClass {
   max-width: 1240px;
   height: 100%;

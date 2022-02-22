@@ -1,12 +1,17 @@
+import styles from './global.module.css';
+import GNB from './modules/GNB/GNB.js';
 import FlowerClass from './modules/FlowerClass/FlowerClass.js';
 
 export default function App({ $target }) {
   this.state = {};
+  const $main = document.createElement('main');
 
-  const flowerClass = new FlowerClass({
+  const gnb = new GNB({
     $target,
-    initialState: {
-      //...
-    },
   });
+  const flowerClass = new FlowerClass({
+    $target: $main,
+  });
+
+  $target.appendChild($main);
 }
