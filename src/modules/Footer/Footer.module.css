@@ -24,7 +24,7 @@
 .sect_sns {
   display: flex;
   flex-direction: row;
-  justify-content: start;
+  justify-content: flex-start;
 }
 
 .sns_icon {
