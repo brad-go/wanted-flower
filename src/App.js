@@ -8,7 +8,6 @@ import Popup from './modules/Popup/Popup.js';
 
 export default function App({ $target }) {
   const $main = document.createElement('main');
-  $target.appendChild($main);
 
   const getCookie = () => {
     const cookie = document.cookie;
