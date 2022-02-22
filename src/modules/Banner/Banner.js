@@ -71,7 +71,7 @@ export default function Banner({ $target }) {
 
   const $showRoomTitle = document.createElement('strong');
   $showRoomTitle.className = styles.bannerTitle;
-  $showRoomTitle.innerText = '꾸까 오프라인 쇼륨';
+  $showRoomTitle.innerText = '꾸까 오프라인 쇼룸';
 
   const $showRoomText = document.createElement('p');
   $showRoomText.className = styles.bannerText;
@@ -83,7 +83,7 @@ export default function Banner({ $target }) {
   const $showRoomButton = document.createElement('button');
   $showRoomButton.className = styles.bannerButton;
   $showRoomButton.classList.add('btn', 'btn-outline-dark');
-  $showRoomButton.innerText = '꾸까 쇼륨 안내';
+  $showRoomButton.innerText = '꾸까 쇼룸 안내';
 
   const $showRoomPhrase = document.createElement('div');
   $showRoomPhrase.className = styles.bannerPhrase;
