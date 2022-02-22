@@ -78,6 +78,7 @@
 
 - footer 영역 구현
 - 팝업 영역 구현
+  - cookie를 활용한 팝업 expire 설정
 
 <br />
 
@@ -93,6 +94,7 @@
     │   ├── FlowerClass
     │   ├── Footer
     │   ├── GNB
-    │   └── Movie
+    │   ├── Movie
+    │   └── Popup
     └── utils
 ```
