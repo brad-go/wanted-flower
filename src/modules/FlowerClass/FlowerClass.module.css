@@ -1,0 +1,411 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-size: 12px;
+  font-family: 'Noto Sans KR', sans-serif, NanumGothic, '나눔고딕', Dotum,
+    '돋움', Helvetica, 'Apple SD Gothic Neo';
+  line-height: 16px;
+  letter-spacing: -0.5px;
+}
+
+a {
+  color: #222;
+  text-decoration: none;
+  outline-width: 1px;
+  cursor: pointer;
+}
+
+button {
+  all: unset;
+  cursor: pointer;
+}
+
+.flowerClass {
+  max-width: 1240px;
+  height: 100%;
+  margin: 0 auto;
+  color: #222;
+}
+
+/* header */
+.products {
+  position: relative;
+  padding: 20px 20px 40px;
+}
+
+.header {
+  padding: 40px 20px 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 34px;
+  letter-spacing: -0.33px;
+}
+
+.moreLink {
+  display: none;
+}
+
+.products {
+  position: relative;
+  padding: 20px 20px 40px;
+}
+
+.productList {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  z-index: 100;
+  transition: 1s ease-in-out;
+  transition-property: transform border-top;
+}
+
+.thumbnail {
+  outline-width: 1px;
+  transition: transform 1s ease-out;
+}
+
+.link {
+  position: relative;
+  display: block;
+}
+
+.desc {
+  position: absolute;
+  bottom: 18%;
+  left: 20px;
+  max-width: 90%;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  letter-spacing: -0.21px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.descName {
+  position: absolute;
+  bottom: 7%;
+  left: 20px;
+  max-width: 90%;
+  padding-right: 15px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px;
+  letter-spacing: -0.24px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.descName::after {
+  content: '';
+  position: absolute;
+  top: 8px;
+  right: 4px;
+  text-align: center;
+  background-image: url(https://kukka-2-media-123.s3.amazonaws.com/static/kukkart_new/img/sprite/kukka.png);
+  background-size: 626px 422.5px;
+  width: 5.5px;
+  height: 9.5px;
+  background-position: -619px -187.5px;
+}
+
+.imgMobile {
+  display: block;
+  width: 100%;
+}
+
+.imgPc {
+  display: none;
+  width: 100%;
+}
+
+.item:first-of-type .summary {
+  display: none;
+}
+
+.item:first-of-type .thumbnail img {
+  width: 100%;
+}
+
+.item:not(:first-of-type) {
+  padding-top: 20px;
+}
+
+.item:not(:first-of-type) .detail {
+  position: relative;
+  padding-left: 160px;
+}
+
+.item:not(:first-of-type) .thumbnail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 144px;
+}
+
+.item:not(:first-of-type) .link .imgMobile {
+  display: block;
+}
+
+.item:not(:first-of-type) .desc,
+.item:not(:first-of-type) .descName {
+  display: none;
+}
+
+.item:last-of-type {
+  margin-top: 20px;
+  border-top: #ececec 1px solid;
+}
+
+.summary {
+  display: block;
+  height: auto;
+  min-height: 105px;
+  padding: 0;
+  letter-spacing: -0.21px;
+  transition: opacity 0.4s ease-out;
+}
+
+.name {
+  display: block;
+  margin-top: 1px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.price {
+  display: block;
+  margin-top: 10px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+
+.branchContainer {
+  position: relative;
+  bottom: inherit;
+  margin-top: 10px;
+}
+
+.branch {
+  display: inline-block;
+  min-width: 52px;
+  margin-right: 4px;
+  margin-bottom: 2px;
+  padding: 0 8px;
+  border: 1px solid;
+  border-radius: 10px;
+  background: 0 0;
+  font-size: 10px;
+  font-weight: 300;
+  text-align: center;
+  line-height: 20px;
+  letter-spacing: -0.15px;
+  vertical-align: middle;
+}
+
+.branch:hover {
+  text-decoration: underline;
+}
+
+.gwang {
+  border-color: #a27fde;
+  color: #a27fde;
+}
+
+.jam {
+  border-color: #46cfa7;
+  color: #46cfa7;
+}
+
+.wolgye {
+  border-color: #ffa04d;
+  color: #ffa04d;
+}
+
+.guro {
+  border-color: #68a4fe;
+  color: #68a4fe;
+}
+
+.songpa {
+  border-color: #ffcd32;
+  color: #ffcd32;
+}
+
+.dongrae {
+  border-color: #00afe3;
+  color: #00afe3;
+}
+
+@media (min-width: 1024px) {
+  .flowerClass {
+    padding: 0 60px;
+  }
+  .header {
+    padding: 90px 0 0;
+  }
+  .title {
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 45px;
+    letter-spacing: -0.45px;
+  }
+  .products {
+    padding: 40px 0 120px;
+  }
+  .products::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .moreLink {
+    position: absolute;
+    top: -30px;
+    right: 0;
+    display: block;
+    font-size: 14px;
+    font-weight: 300;
+    color: #787878;
+    line-height: 20px;
+    letter-spacing: -0.21px;
+  }
+  .item:nth-of-type(2) {
+    padding-top: 0;
+  }
+  .item:last-of-type {
+    margin-top: 2.2%;
+    padding-top: 2.2%;
+  }
+  .item:not(:first-of-type) {
+    float: right;
+    width: 50%;
+  }
+  .item:not(:first-of-type) .detail {
+    padding: 0;
+  }
+  .item:not(:first-of-type) .detail::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .item:first-of-type .thumbnail {
+    float: left;
+    width: 50%;
+    padding-right: 2%;
+  }
+  .item:not(:first-of-type) .thumbnail {
+    position: relative;
+    top: inherit;
+    left: inherit;
+    float: left;
+    width: 42%;
+    overflow: hidden;
+  }
+  .item:not(:first-of-type) .link .imgMobile {
+    display: none;
+  }
+  .desc {
+    left: 35px;
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.27px;
+  }
+  .descName {
+    left: 35px;
+    padding-right: 20px;
+    font-size: 25px;
+    line-height: 37px;
+    letter-spacing: -0.38px;
+  }
+  .descName::after {
+    top: 11px;
+    background-position: -1238px -375px;
+    width: 11px;
+    height: 19px;
+    background-size: 1252px 845px;
+  }
+  .imgMobile {
+    display: none;
+    width: 100%;
+  }
+  .imgPc {
+    display: block;
+    width: 100%;
+  }
+  .item:not(:first-of-type) .imgPc:hover {
+    transform: scale(1.1);
+  }
+  .summary {
+    overflow: hidden;
+    height: auto;
+    min-height: none;
+    padding: 0 0 0 20px;
+  }
+  .name {
+    margin-top: 2px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    letter-spacing: -0.24px;
+  }
+  .name:hover {
+    text-decoration: underline;
+  }
+  .price {
+    margin-top: 5px;
+  }
+  .branchContainer {
+    margin-top: 15px;
+  }
+  .btnContainer button {
+    position: absolute;
+    top: 40%;
+    margin-top: -32px;
+    z-index: 1200;
+    transition: transform 0.2s ease-out;
+  }
+  .btnContainer button:hover {
+    transform: scale(1.1);
+  }
+  .prevBtn {
+    left: -84px;
+    margin: 0;
+    background-image: url(https://kukka-2-media-123.s3.amazonaws.com/static/kukkart_new/img/sprite/kukka.png);
+    background-position: -1158px -246px;
+    width: 84px;
+    height: 84px;
+    background-size: 1252px 845px;
+  }
+  .nextBtn {
+    right: -84px;
+    margin: 0;
+    background-image: url(https://kukka-2-media-123.s3.amazonaws.com/static/kukkart_new/img/sprite/kukka.png);
+    background-position: -1108px -492px;
+    width: 84px;
+    height: 84px;
+    background-size: 1252px 845px;
+  }
+}

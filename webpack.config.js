@@ -2,14 +2,16 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 module.exports = (env, argv) => ({
-  // mode: 'development',
   devServer: { static: './dist' },
   entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: { keep: /\.git/ },
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -43,6 +45,10 @@ module.exports = (env, argv) => ({
             },
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
