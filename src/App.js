@@ -51,6 +51,7 @@ export default function App({ $target }) {
   const flowerClass = new FlowerClass({
     $target: $main,
   });
+  const banner = new Banner({ $target });
   const footer = new Footer({
     $target,
   });

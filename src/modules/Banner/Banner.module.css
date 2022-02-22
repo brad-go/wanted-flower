@@ -42,8 +42,7 @@ a:hover {
 
 .carousel {
   padding: 20px 20px 50px;
-  height: 50vw;
-  min-height: 150px;
+  height: 48vw;
 }
 
 .slider {
@@ -55,6 +54,7 @@ a:hover {
 .track {
   position: relative;
   left: 0;
+  width: 100%;
   height: 100%;
   overflow: hidden;
   touch-action: manipulation;
@@ -93,7 +93,7 @@ a:hover {
   width: 8px;
   height: 8px;
   padding: 0;
-  margin: 4px;
+  margin: 6px;
   border: none;
   border-radius: 50%;
   background: 0 0;
@@ -102,6 +102,10 @@ a:hover {
   word-spacing: normal;
   overflow: visible;
   cursor: pointer;
+}
+
+.dots button:first-of-type {
+  background-color: #f5ca5f;
 }
 
 .dot {
@@ -113,22 +117,25 @@ a:hover {
   background-color: #e4e4e4;
 }
 
-.dots-active {
-  background-color: #f5ca5f;
-}
-
 .banner {
   height: 100%;
+  background-color: #f7f7f7;
   color: #222;
+  z-index: -3;
 }
+/* 
+.bannerItem {
+  cursor: pointer;
+} */
 
 .bannerLink {
   overflow: hidden;
-  text-align: center;
+  /* text-align: center; */
+  /* pointer-events: none; */
 }
 
 .bannerImg {
-  z-index: -2;
+  z-index: 0;
 }
 
 .bannerRealImgMobile {
@@ -141,7 +148,7 @@ a:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: -1;
+  z-index: 1;
 }
 
 .bannerRealImgPC {
@@ -151,8 +158,7 @@ a:hover {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: transform 0.2s ease-out 0s;
-  z-index: -1;
+  z-index: 1;
 }
 
 .bannerLink:hover .bannerRealImgPC {
@@ -161,21 +167,28 @@ a:hover {
 
 .bannerPhrase {
   flex-direction: column;
+  align-items: flex-start;
+  gap: 36px;
+  padding-bottom: 60px;
 }
 
 .bannerTitle {
   width: 100%;
-  font-size: 20px;
-  font-weight: 700;
-  letter-spacing: -0.33px;
-  line-height: 31px;
+  padding: 0 20px;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: -0.21px;
+  z-index: 10;
 }
 
 .bannerText {
+  padding: 0 20px;
   font-size: 12px;
   line-height: 20px;
   font-weight: 300;
   letter-spacing: -0.21px;
+  z-index: 10;
 }
 
 .bannerButton {
@@ -188,6 +201,7 @@ a:hover {
   font-weight: 300;
   line-height: 34px;
   letter-spacing: -0.21px;
+  z-index: 10;
 }
 
 @media screen and (min-width: 1024px) {
@@ -207,11 +221,13 @@ a:hover {
   .track {
     display: flex;
     width: 100vw;
-    height: 13vw;
+    height: 14vw;
+    min-height: 150px;
     margin: 0 auto;
   }
   .bannerItem {
     width: 50vw !important;
+    height: 100%;
   }
   .track .bannerItem {
     clear: left;
@@ -221,7 +237,30 @@ a:hover {
   .bannerRealImgMobile {
     display: none;
   }
+  .bannerImgPc {
+    min-height: 150px !important;
+  }
+  .bannerLink {
+    text-align: center;
+  }
+  .bannerPhrase {
+    align-items: center;
+    gap: 0;
+    padding-bottom: 0;
+  }
+  .bannerTitle {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.33px;
+    line-height: 31px;
+  }
+  .bannerText {
+    margin-bottom: 10px;
+  }
   .bannerButton {
     display: inline-block;
+  }
+  .clone {
+    display: none;
   }
 }

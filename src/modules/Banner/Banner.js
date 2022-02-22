@@ -28,7 +28,6 @@ export default function Banner({ $target }) {
     'w-100',
     'h-100',
     'justify-content-center',
-    'align-items-center',
   );
   $brandPhrase.append($brandTitle, $brandText, $brandButton);
 
@@ -126,7 +125,6 @@ export default function Banner({ $target }) {
 
   const $showRoom = document.createElement('div');
   $showRoom.className = styles.bannerItem;
-  $showRoom.classList.add('slide');
   $showRoom.appendChild($showRoomItem);
 
   const $track = document.createElement('div');
@@ -190,6 +188,17 @@ export default function Banner({ $target }) {
   let slideWidth;
   const slideItems = $track.children;
   const slideCount = slideItems.length;
+  const btns = $dots.children;
+
+  const fillButton = (num) => {
+    if (num % 2 === 0) {
+      btns[0].style.backgroundColor = '#f5ca5f';
+      btns[1].style.backgroundColor = '#e4e4e4';
+    } else {
+      btns[0].style.backgroundColor = '#e4e4e4';
+      btns[1].style.backgroundColor = '#f5ca5f';
+    }
+  };
 
   const makeClone = () => {
     for (let i = 0; i < slideCount; i++) {
@@ -210,10 +219,12 @@ export default function Banner({ $target }) {
     }, 100);
   };
 
+  const setInitialPos = () => {
+    const initialTransValue = -slideWidth * slideCount;
+    $track.style.transform = `translateX(${initialTransValue}px)`;
+  };
+
   const updateWidth = () => {
-    // const trackWidth = $track.offsetWidth;
-    // const trackLength = $track.children.length;
-    // console.log(trackWidth / $track.children.length - 40);
     slideWidth = $carousel.offsetWidth - 40;
     const newSlideLength = $track.children.length;
 
@@ -221,20 +232,22 @@ export default function Banner({ $target }) {
       slideItems[i].style.width = `${slideWidth}px`;
     }
     $track.style.width = `${slideWidth * newSlideLength}px`;
-  };
-
-  const setInitialPos = () => {
-    const initialTransValue = -slideWidth * slideCount;
-    $track.style.transform = `translateX(${initialTransValue}px)`;
+    $track.style.transition = 'none';
+    setInitialPos();
+    setTimeout(() => {
+      $track.style.transition = '0.5s ease-out';
+    }, 100);
   };
 
   const moveSlide = (num) => {
     $track.style.left = `${-num * slideWidth}px`;
     currentIdx = num;
+    fillButton(num);
     console.log(currentIdx, slideCount);
     if (currentIdx === slideCount || currentIdx === -slideCount) {
       setTimeout(() => {
         $track.style.transition = 'none';
+        $track.classList.add(styles.none);
         $track.style.left = '0px';
         currentIdx = 0;
       }, 500);
@@ -254,11 +267,24 @@ export default function Banner({ $target }) {
 
   window.addEventListener('load', () => {
     makeClone();
+    if (window.innerWidth > 1024) {
+      $track.style.transform = 'none';
+    }
   });
 
   window.addEventListener('resize', () => {
+    const clones = document.getElementsByClassName('clone');
     if (window.innerWidth < 1024) {
+      for (let i = 0; i < clones.length; i++) {
+        clones[i].style.display = 'block';
+      }
       updateWidth();
+    } else {
+      for (let i = 0; i < clones.length; i++) {
+        clones[i].style.display = 'none';
+      }
+      $track.style.transition = 'none';
+      $track.style.transform = 'none';
     }
   });
 
