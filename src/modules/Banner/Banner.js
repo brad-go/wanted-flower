@@ -243,7 +243,7 @@ export default function Banner({ $target }) {
     $track.style.left = `${-num * slideWidth}px`;
     currentIdx = num;
     fillButton(num);
-    console.log(currentIdx, slideCount);
+
     if (currentIdx === slideCount || currentIdx === -slideCount) {
       setTimeout(() => {
         $track.style.transition = 'none';
@@ -257,22 +257,7 @@ export default function Banner({ $target }) {
     }
   };
 
-  $nextDots.addEventListener('click', () => {
-    moveSlide(currentIdx + 1);
-  });
-
-  $prevDots.addEventListener('click', () => {
-    moveSlide(currentIdx - 1);
-  });
-
-  window.addEventListener('load', () => {
-    makeClone();
-    if (window.innerWidth > 1024) {
-      $track.style.transform = 'none';
-    }
-  });
-
-  window.addEventListener('resize', () => {
+  const handleResize = () => {
     const clones = document.getElementsByClassName('clone');
     if (window.innerWidth < 1024) {
       for (let i = 0; i < clones.length; i++) {
@@ -285,8 +270,80 @@ export default function Banner({ $target }) {
       }
       $track.style.transition = 'none';
       $track.style.transform = 'none';
+      $track.style.left = 0;
+    }
+  };
+
+  $nextDots.addEventListener('click', () => {
+    moveSlide(currentIdx + 1);
+  });
+
+  $prevDots.addEventListener('click', () => {
+    moveSlide(currentIdx - 1);
+  });
+
+  let isMouse = false;
+  let originPos;
+  let startX;
+  let currentX;
+
+  const changeToNumber = (str) => {
+    const regex = /-?[^0-9]/g;
+    return Number(str.replace(regex, ''));
+  };
+
+  const dragStart = (e) => {
+    isMouse = true;
+    originPos = changeToNumber($track.style.transform);
+    startX = e.pageX;
+  };
+
+  const dragEnd = () => {
+    isMouse = false;
+  };
+
+  let debouncer;
+  const dragMove = (e) => {
+    if (!isMouse) return;
+    if (debouncer) {
+      clearTimeout(debouncer);
+    }
+
+    e.preventDefault();
+    currentX = e.pageX;
+    const moveX = currentX - startX;
+    $track.style.transition = 'none';
+    $track.style.transform = `translateX(${moveX - originPos}px)`;
+
+    debouncer = setTimeout(() => {
+      $track.style.transition = '0.5s ease-in';
+      if (moveX < -400) {
+        moveSlide(currentIdx + 1);
+        setInitialPos();
+        return;
+      }
+      if (moveX > 400) {
+        moveSlide(currentIdx - 1);
+        setInitialPos();
+        return;
+      }
+      setInitialPos();
+    }, 200);
+  };
+
+  $track.addEventListener('mousedown', dragStart);
+  $track.addEventListener('mouseup', dragEnd);
+  $track.addEventListener('mouseleave', dragEnd);
+  $track.addEventListener('mousemove', dragMove);
+
+  window.addEventListener('load', () => {
+    makeClone();
+    if (window.innerWidth > 1024) {
+      $track.style.transform = 'none';
     }
   });
+
+  window.addEventListener('resize', handleResize);
 
   $target.appendChild($banner);
 }
