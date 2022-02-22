@@ -1,9 +1,9 @@
-import Sample from './modules/Sample/Sample.js';
+import FlowerClass from './modules/FlowerClass/FlowerClass.js';
 
 export default function App({ $target }) {
   this.state = {};
 
-  const sample = new Sample({
+  const flowerClass = new FlowerClass({
     $target,
     initialState: {
       //...

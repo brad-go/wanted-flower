@@ -1,4 +1,7 @@
 import styles from './FlowerClass.module.css';
+import homeclass from '../../assets/img_homeclass.jpeg';
+import oasis from '../../assets/img_oasis.jpg';
+import handitied from '../../assets/img_handtied.jpg';
 
 const branchData = [
   {
@@ -34,8 +37,8 @@ const listData = [
     price: '299,000원',
     image:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/3/class_2022_home_mob_okfoQzB.jpeg',
-    imagePc:
-      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/3/class_2022_home_web_R0tReO1.jpeg',
+    imagePc: homeclass,
+    // 'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/3/class_2022_home_web_R0tReO1.jpeg',
     branch: branchData,
     href: '/class/content/381',
   },
@@ -44,8 +47,8 @@ const listData = [
     price: '79,000원',
     image:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/106/img_%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4-%EB%A6%AC%EC%8A%A4.jpg',
-    imagePc:
-      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/106/img_%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4-%EB%A6%AC%EC%8A%A4.jpg',
+    imagePc: oasis,
+    // 'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/106/img_%EC%98%A4%EC%95%84%EC%8B%9C%EC%8A%A4-%EB%A6%AC%EC%8A%A4.jpg',
     branch: [
       {
         href: '/class/contetns/398',
@@ -61,8 +64,8 @@ const listData = [
     price: '79,000원',
     image:
       'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/107/img_%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%95%B8%EB%93%9C%ED%83%80%EC%9D%B4%EB%93%9C.jpg',
-    imagePc:
-      'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/107/img_%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%95%B8%EB%93%9C%ED%83%80%EC%9D%B4%EB%93%9C.jpg',
+    imagePc: handitied,
+    // 'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ClassProductGroup/107/img_%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%95%B8%EB%93%9C%ED%83%80%EC%9D%B4%EB%93%9C.jpg',
     branch: branchData,
     href: '/class/content/408',
   },
@@ -184,9 +187,9 @@ export default function Image({ $target }) {
 
     $prevBtn.addEventListener('click', () => {
       thumbnail[0].style.transform = 'translate(72%, -27.5%) scale(0.45)';
-      thumbnail[2].style.transform = 'translate(-175%, -70%) scale(2.3)';
+      thumbnail[2].style.transform = 'translate(-175%, -64%) scale(2.3)';
       summaries[2].style.opacity = '0';
-      items[1].style.transform = 'translateY(140%)';
+      items[1].style.transform = 'translateY(129%)';
       items[1].style.borderTopColor = 'transparent';
       setTimeout(() => {
         thumbnail[0].style.transition = 'none';
@@ -205,8 +208,8 @@ export default function Image({ $target }) {
     });
 
     $nextBtn.addEventListener('click', () => {
-      thumbnail[0].style.transform = 'translate(70%, 32%) scale(0.4)';
-      thumbnail[1].style.transform = 'translate(-175%, 70%) scale(2.3)';
+      thumbnail[0].style.transform = 'translate(71%, 28%) scale(0.45)';
+      thumbnail[1].style.transform = 'translate(-175%, 65%) scale(2.3)';
       summaries[0].style.opacity = '1';
       summaries[1].style.opacity = '0';
       items[2].style.transform = 'translateY(-115%)';
