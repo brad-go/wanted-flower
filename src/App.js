@@ -8,21 +8,15 @@ import Banner from './modules/Banner/Banner.js';
 export default function App({ $target }) {
   this.state = {};
   const $main = document.createElement('main');
-
-
-  // const sample = new Sample({
-  //   $target,
-  //   initialState: {
-  //     //...
-  //   },
-  // });
-
   const gnb = new GNB({
     $target,
   });
+  $target.appendChild($main);
+
   const flowerClass = new FlowerClass({
     $target: $main,
   });
-  const banner = new Banner({ $target });
-  $target.appendChild($main);
+  const banner = new Banner({
+    $target: $main,
+  });
 }
