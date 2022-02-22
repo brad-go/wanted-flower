@@ -1,12 +1,11 @@
-import Sample from './modules/Sample/Sample.js';
+// import Sample from './modules/Sample/Sample.js';
+import Footer from "./modules/Footer/Footer.js";
 
 export default function App({ $target }) {
   this.state = {};
 
-  const sample = new Sample({
-    $target,
-    initialState: {
-      //...
-    },
+  const footer = new Footer({
+    $target
   });
+
 }
