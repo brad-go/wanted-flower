@@ -17,16 +17,19 @@ export default function Footer({ $target }) {
     {
       title: 'facebook',
       image: Facebook,
+      type: 'square',
       to: 'https://ko-kr.facebook.com/kukka.kr/',
     },
     {
       title: 'instagram',
       image: Instagram,
+      type: 'square',
       to: 'https://www.instagram.com/kukkakorea/',
     },
     {
       title: 'youtube',
       image: Youtube,
+      type: 'rectangle',
       to: 'https://www.youtube.com/channel/UC_zQakXCUPvjcfsU067zyCQ?view_as=subscriber',
     },
   ];
@@ -78,12 +81,18 @@ export default function Footer({ $target }) {
   const setIconList = (list) => {
     return `
       ${list
-        .map(
-          ({ title, image, to }) => `
-        <a href=${to} target=_blank>
-          <img src=${image} alt=${title} class=${styles.sns_icon}>
-        </a>
-      `,
+        .map(({ title, image, type, to }) =>
+          type === 'square'
+            ? `
+              <a href=${to} target=_blank>
+                <img src=${image} alt=${title} class=${styles.sns_square}>
+              </a>
+            `
+            : `
+              <a href=${to} target=_blank>
+                <img src=${image} alt=${title} class=${styles.sns_rectangle}>
+              </a>
+            `,
         )
         .join('')}
     `;
