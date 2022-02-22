@@ -31,7 +31,7 @@ module.exports = (env, argv) => ({
         exclude: /\.module\.css$/i,
         use: [argv.mode === 'production' ? 
           MiniCssExtractPlugin.loader
-          : 'style-loader', 'css-loader',
+          : 'style-loader', 'css-loader', 'postcss-loader',
         ],
       },
       {
@@ -45,6 +45,7 @@ module.exports = (env, argv) => ({
               modules: true,
             },
           },
+          'postcss-loader',
         ],
       },
       {
