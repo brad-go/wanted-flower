@@ -1,8 +1,12 @@
 import styles from './Banner.module.css';
 
 export default function Banner({ $target }) {
+  const BRAND_IMG_MOBILE =
+    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/brand_201225.png';
   const BRAND_IMG_PC =
     'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/brand_201225_w.png';
+  const SHOWROOM_IMG_MOBILE =
+    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/offline_201225.png';
   const SHOWROOM_IMG_PC =
     'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/offline_201225_w.png';
 
@@ -31,10 +35,15 @@ export default function Banner({ $target }) {
   );
   $brandPhrase.append($brandTitle, $brandText, $brandButton);
 
-  const $brandRealImg = document.createElement('span');
-  $brandRealImg.className = styles.bannerRealImg;
-  $brandRealImg.classList.add('w-100', 'h-100', 'position-absolute');
-  $brandRealImg.style.backgroundImage = `url(${BRAND_IMG_PC})`;
+  const $brandRealImgMobile = document.createElement('span');
+  $brandRealImgMobile.className = styles.bannerRealImgMobile;
+  $brandRealImgMobile.classList.add('w-100', 'h-100', 'position-absolute');
+  $brandRealImgMobile.style.backgroundImage = `url(${BRAND_IMG_MOBILE})`;
+
+  const $brandRealImgPC = document.createElement('span');
+  $brandRealImgPC.className = styles.bannerRealImgPC;
+  $brandRealImgPC.classList.add('w-100', 'h-100', 'position-absolute');
+  $brandRealImgPC.style.backgroundImage = `url(${BRAND_IMG_PC})`;
 
   const $brandImg = document.createElement('img');
   $brandImg.className = styles.bannerImg;
@@ -45,14 +54,19 @@ export default function Banner({ $target }) {
   $brandLink.className = styles.bannerLink;
   $brandLink.classList.add('d-block', 'w-100', 'h-100', 'position-relative');
   $brandLink.href = '/brand/story';
-  $brandLink.append($brandImg, $brandPhrase, $brandRealImg);
+  $brandLink.append(
+    $brandImg,
+    $brandPhrase,
+    $brandRealImgPC,
+    $brandRealImgMobile,
+  );
 
   const $brandItem = document.createElement('div');
   $brandItem.classList.add('w-100', 'h-100', 'd-inline-block');
   $brandItem.appendChild($brandLink);
 
   const $brand = document.createElement('div');
-  $brand.classList.add('col-lg', 'w-50', 'h-auto', 'p-0');
+  $brand.className = styles.bannerItem;
   $brand.appendChild($brandItem);
 
   const $showRoomTitle = document.createElement('strong');
@@ -82,10 +96,15 @@ export default function Banner({ $target }) {
   );
   $showRoomPhrase.append($showRoomTitle, $showRoomText, $showRoomButton);
 
-  const $showRoomRealImg = document.createElement('span');
-  $showRoomRealImg.className = styles.bannerRealImg;
-  $showRoomRealImg.classList.add('w-100', 'h-100', 'position-absolute');
-  $showRoomRealImg.style.backgroundImage = `url(${SHOWROOM_IMG_PC})`;
+  const $showRoomRealImgMobile = document.createElement('span');
+  $showRoomRealImgMobile.className = styles.bannerRealImgMobile;
+  $showRoomRealImgMobile.classList.add('w-100', 'h-100', 'position-absolute');
+  $showRoomRealImgMobile.style.backgroundImage = `url(${SHOWROOM_IMG_MOBILE})`;
+
+  const $showRoomRealImgPC = document.createElement('span');
+  $showRoomRealImgPC.className = styles.bannerRealImgPC;
+  $showRoomRealImgPC.classList.add('w-100', 'h-100', 'position-absolute');
+  $showRoomRealImgPC.style.backgroundImage = `url(${SHOWROOM_IMG_PC})`;
 
   const $showRoomImg = document.createElement('img');
   $showRoomImg.className = styles.bannerImg;
@@ -96,24 +115,85 @@ export default function Banner({ $target }) {
   $showRoomLink.className = styles.bannerLink;
   $showRoomLink.classList.add('d-block', 'w-100', 'h-100', 'position-relative');
   $showRoomLink.href = '/showRoom/story';
-  $showRoomLink.append($showRoomImg, $showRoomPhrase, $showRoomRealImg);
+  $showRoomLink.append(
+    $showRoomImg,
+    $showRoomPhrase,
+    $showRoomRealImgPC,
+    $showRoomRealImgMobile,
+  );
 
   const $showRoomItem = document.createElement('div');
   $showRoomItem.classList.add('w-100', 'h-100', 'd-inline-block');
   $showRoomItem.appendChild($showRoomLink);
 
   const $showRoom = document.createElement('div');
-  $showRoom.classList.add('col-lg', 'w-50', 'h-auto', 'p-0');
+  $showRoom.className = styles.bannerItem;
   $showRoom.appendChild($showRoomItem);
 
+  const $track = document.createElement('div');
+  $track.className = styles.track;
+  $track.id = 'track';
+  $track.append($brand, $showRoom);
+
+  const $slider = document.createElement('div');
+  $slider.className = styles.slider;
+  $slider.classList.add('w-100', 'm-0');
+  $slider.appendChild($track);
+
+  const $moreLink = document.createElement('a');
+  $moreLink.className = styles.moreLink;
+  $moreLink.innerText = '더보기';
+
+  const $carousel = document.createElement('div');
+  $carousel.className = styles.carousel;
+  $carousel.classList.add('w-100', 'm-0', 'd-block', 'position-relative');
+  $carousel.append($slider, $moreLink);
+
+  const $title = document.createElement('h3');
+  $title.className = styles.title;
+  $title.classList.add('m-0', 'p-0');
+  $title.innerText = '꾸까 브랜드 스토리';
+
+  const $header = document.createElement('div');
+  $header.className = styles.header;
+  $header.classList.add('w-100');
+  $header.appendChild($title);
+
   const $container = document.createElement('div');
-  $container.classList.add('container-fluid', 'd-flex', 'p-0');
-  $container.append($brand, $showRoom);
+  $container.className = styles.container;
+  $container.classList.add('w-100', 'm-0');
+  $container.append($header, $carousel);
 
   const $banner = document.createElement('section');
   $banner.className = styles.banner;
-  $banner.classList.add('container-fluid', 'd-flex', 'p-0');
+  $banner.classList.add(
+    'container-fluid',
+    'p-0',
+    'justify-content-center',
+    'align-items-center',
+  );
   $banner.append($container);
+
+  const handleResize = () => {
+    const track = document.getElementById('track');
+    const items = track.children;
+
+    if (window.innerWidth < 1024) {
+      const trackLength = track.childNodes.length;
+      const itemWidth = track.offsetWidth;
+
+      for (let i = 0; i < trackLength; i++) {
+        items[i].style.width = `${itemWidth}px`;
+      }
+      track.style.width = `${itemWidth * trackLength}px`;
+    }
+  };
+
+  window.addEventListener('load', () => {
+    handleResize();
+  });
+
+  window.addEventListener('resize', handleResize);
 
   $target.appendChild($banner);
 }
