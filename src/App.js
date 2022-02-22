@@ -9,12 +9,6 @@ export default function App({ $target }) {
   const $main = document.createElement('main');
   $target.appendChild($main);
 
-  window.onload = function () {
-    setTimeout(function () {
-      scrollTo(0, 0);
-    }, 100);
-  };
-
   const getCookie = () => {
     const cookie = document.cookie;
 
