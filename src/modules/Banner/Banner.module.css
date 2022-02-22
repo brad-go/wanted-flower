@@ -42,6 +42,8 @@ a:hover {
 
 .carousel {
   padding: 20px 20px 50px;
+  height: 50vw;
+  min-height: 150px;
 }
 
 .slider {
@@ -53,6 +55,7 @@ a:hover {
 .track {
   position: relative;
   left: 0;
+  height: 100%;
   overflow: hidden;
   touch-action: manipulation;
 }
@@ -68,18 +71,59 @@ a:hover {
 
 .track .bannerItem {
   float: left;
+  height: 100%;
   min-height: 1px;
   position: relative;
   touch-action: pan-y;
 }
 
+.dots {
+  position: absolute;
+  bottom: 16px;
+  left: 0;
+  right: 0;
+  padding-bottom: 9px;
+  text-align: center;
+  z-index: 100;
+}
+
+.dots button {
+  display: inline-block;
+  align-items: flex-start;
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  margin: 4px;
+  border: none;
+  border-radius: 50%;
+  background: 0 0;
+  background-color: #e4e4e4;
+  text-align: center;
+  word-spacing: normal;
+  overflow: visible;
+  cursor: pointer;
+}
+
+.dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border: none;
+  border-radius: 50%;
+  background-color: #e4e4e4;
+}
+
+.dots-active {
+  background-color: #f5ca5f;
+}
+
 .banner {
-  height: 13vw;
+  height: 100%;
   color: #222;
 }
 
 .bannerLink {
-  overflow: hidden !important;
+  overflow: hidden;
   text-align: center;
 }
 
@@ -150,19 +194,24 @@ a:hover {
   .container {
     padding: 0;
   }
+  .banner {
+    height: 13vw;
+  }
   .header {
     display: none;
   }
   .carousel {
+    height: 100%;
     padding: 0;
   }
   .track {
     display: flex;
-    width: 100vw !important;
+    width: 100vw;
     height: 13vw;
+    margin: 0 auto;
   }
   .bannerItem {
-    width: 100%;
+    width: 50vw !important;
   }
   .track .bannerItem {
     clear: left;

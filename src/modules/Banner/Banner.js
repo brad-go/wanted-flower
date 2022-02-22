@@ -130,24 +130,42 @@ export default function Banner({ $target }) {
   $showRoom.className = styles.bannerItem;
   $showRoom.appendChild($showRoomItem);
 
+  const $brandPrev = $brand.cloneNode(true);
+  const $brandNext = $brand.cloneNode(true);
+  const $showRoomPrev = $showRoom.cloneNode(true);
+  const $showRoomNext = $showRoom.cloneNode(true);
+
   const $track = document.createElement('div');
   $track.className = styles.track;
   $track.id = 'track';
-  $track.append($brand, $showRoom);
 
   const $slider = document.createElement('div');
   $slider.className = styles.slider;
-  $slider.classList.add('w-100', 'm-0');
+  $slider.classList.add('w-100', 'h-100', 'm-0');
   $slider.appendChild($track);
 
   const $moreLink = document.createElement('a');
   $moreLink.className = styles.moreLink;
   $moreLink.innerText = '더보기';
 
+  const $prevDot = document.createElement('span');
+  const $nextDot = document.createElement('span');
+  $prevDot.classList.add('dot');
+  $nextDot.classList.add('dot');
+  const $prevDots = document.createElement('button');
+  const $nextDots = document.createElement('button');
+  $prevDots.appendChild($prevDot);
+  $nextDots.appendChild($nextDot);
+
+  const $dots = document.createElement('div');
+  $dots.className = styles.dots;
+  $dots.append($prevDots, $nextDots);
+
   const $carousel = document.createElement('div');
   $carousel.className = styles.carousel;
   $carousel.classList.add('w-100', 'm-0', 'd-block', 'position-relative');
-  $carousel.append($slider, $moreLink);
+  $carousel.id = 'carousel';
+  $carousel.append($slider, $moreLink, $dots);
 
   const $title = document.createElement('h3');
   $title.className = styles.title;
@@ -175,21 +193,92 @@ export default function Banner({ $target }) {
   $banner.append($container);
 
   const handleResize = () => {
-    const track = document.getElementById('track');
-    const items = track.children;
-
     if (window.innerWidth < 1024) {
+      const carousel = document.getElementById('carousel');
+      const track = document.getElementById('track');
+
+      const slideItems = track.children;
+      const slideWidth = carousel.offsetWidth - 40;
       const trackLength = track.childNodes.length;
-      const itemWidth = track.offsetWidth;
 
       for (let i = 0; i < trackLength; i++) {
-        items[i].style.width = `${itemWidth}px`;
+        slideItems[i].style.width = `${slideWidth}px`;
       }
-      track.style.width = `${itemWidth * trackLength}px`;
+      track.style.width = `${slideWidth * trackLength}px`;
+    } else {
+      if ($brandPrev) {
+        $brandPrev.remove();
+        $brandNext.remove();
+        $showRoomPrev.remove();
+        $showRoomNext.remove();
+      }
     }
   };
 
+  let currentIdx = 0;
+  let currentSlide = $track.childNodes;
+
+  $nextDots.addEventListener('click', () => {
+    const carousel = document.getElementById('carousel');
+    const track = document.getElementById('track');
+    const trackLength = track.childNodes.length;
+    const slideItems = track.children;
+    const slideWidth = carousel.offsetWidth - 40;
+
+    if (currentIdx <= trackLength - 1) {
+      track.style.transition = 300 + 'ms';
+      track.style.transform =
+        'translate3d(-' + slideWidth * (currentIdx + 1) + 'px, 0px, 0px)';
+    }
+    if (currentIdx === trackLength - 1) {
+      setTimeout(() => {
+        track.style.transition = '0ms';
+        track.style.transform = 'translate3d(0px, 0px, 0px)';
+        currentIdx = -1;
+      }, 300);
+      currentIdx = -1;
+    }
+    currentSlide.classList.remove('slideActive');
+    currentSlide = slideItems[++currentIdx];
+    currentSlide.classList.add('slideActive');
+  });
+
+  $prevDots.addEventListener('click', () => {
+    const carousel = document.getElementById('carousel');
+    const track = document.getElementById('track');
+    const trackLength = track.childNodes.length;
+    const slideWidth = carousel.offsetWidth - 40;
+    if (currentIdx >= 0) {
+      track.style.transition = 300 + 'ms';
+      track.style.transform =
+        'translate3d(-' + slideWidth * currentIdx - 1 + 'px, 0px, 0px)';
+    }
+    if (currentIdx === 0) {
+      setTimeout(() => {
+        track.style.transition = '0ms';
+        track.style.transform =
+          'translate3d(-' + slideWidth * trackLength + 'px, 0px, 0px)';
+      }, 300);
+      currentIdx = trackLength;
+    }
+    curSlide.classList.remove('slide_active');
+    curSlide = slideContents[--currentIdx];
+    curSlide.classList.add('slide_active');
+  });
+
   window.addEventListener('load', () => {
+    if (window.innerWidth > 1023) {
+      $track.append($brand, $showRoom);
+    } else {
+      $track.append(
+        $brandPrev,
+        $showRoomPrev,
+        $brand,
+        $showRoom,
+        $brandNext,
+        $showRoomNext,
+      );
+    }
     handleResize();
   });
 
