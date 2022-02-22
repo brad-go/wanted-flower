@@ -50,7 +50,7 @@ export default function Banner({ $target }) {
   const $brandLink = document.createElement('a');
   $brandLink.className = styles.bannerLink;
   $brandLink.classList.add('d-block', 'w-100', 'h-100', 'position-relative');
-  $brandLink.href = '/brand/story';
+  $brandLink.href = '#';
   $brandLink.append(
     $brandImg,
     $brandPhrase,
@@ -109,7 +109,7 @@ export default function Banner({ $target }) {
   const $showRoomLink = document.createElement('a');
   $showRoomLink.className = styles.bannerLink;
   $showRoomLink.classList.add('d-block', 'w-100', 'h-100', 'position-relative');
-  $showRoomLink.href = '/showRoom/story';
+  $showRoomLink.href = '#';
   $showRoomLink.append(
     $showRoomImg,
     $showRoomPhrase,
