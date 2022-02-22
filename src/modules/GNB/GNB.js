@@ -1,5 +1,6 @@
 import styles from './GNB.module.css';
 import { getScrollHeight } from '../../utils/height';
+import { MOVIE_ID, FLOWER_CLASS_ID } from '../../constants/id';
 
 const USER_ITEMS = ['로그인', '회원가입', '꾸까 고객센터', '기업제휴'];
 
@@ -76,7 +77,7 @@ export default function GNB({ $target }) {
     const $li = document.createElement('li');
     const $button = document.createElement('button');
     $button.innerText = menu;
-    $button.onClick = () => {};
+    $button.onclick = () => handleMenuClick(menu === '동영상' ? MOVIE_ID : FLOWER_CLASS_ID);
     $li.appendChild($button);
     return $li;
   });
@@ -96,6 +97,24 @@ export default function GNB({ $target }) {
       return;
     }
     menuItems.forEach(($one) => $menu.appendChild($one));
+  }
+
+  function handleMenuClick(id) {
+    const $target = document.getElementById(id);
+    const targetY = $target.offsetTop;
+    const curY = -document.body.getBoundingClientRect().y;
+    if (targetY === curY) return;
+
+    const sign = targetY > curY ? 1 : -1;
+    let timer;
+    timer = setInterval(() => {
+      window.scrollBy(0, 15 * sign);
+      console.log('moving to', sign);
+      if ((targetY + document.body.getBoundingClientRect().y) * sign <= 0) {
+        clearInterval(timer);
+      }
+    }, 1);
+    return;
   }
 
   document.addEventListener('scroll', (e) => {
