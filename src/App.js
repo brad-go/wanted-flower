@@ -41,6 +41,8 @@ export default function App({ $target }) {
     if (isChecked) {
       setCookie('popupVisible', 'false', 1);
     }
+
+    window.scrollTo(0, 0);
   };
 
   const gnb = new GNB({
