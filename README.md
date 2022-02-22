@@ -88,7 +88,6 @@
 .
 └── src
     ├── assets
-    │   └── images
     ├── constants
     ├── modules
     │   ├── FlowerClass
