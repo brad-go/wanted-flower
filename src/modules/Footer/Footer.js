@@ -1,7 +1,8 @@
 import styles from './Footer.module.css';
-// import facebook from '../../assets/images/facebook.png';
-// import instagram from '../../assets/images/instagram.png';
-// import youtube from '../../assets/images/youtube.png';
+import Facebook from '../../assets/images/facebook.png';
+import Instagram from '../../assets/images/instagram.png';
+import Youtube from '../../assets/images/youtube.png';
+import Logo_footer from '../../assets/images/logo_footer.png';
 
 export default function Footer({ $target }) {
   const $footer = document.createElement('footer');
@@ -15,20 +16,22 @@ export default function Footer({ $target }) {
   const iconList = [
     {
       title: 'facebook',
+      image: Facebook,
       to: 'https://ko-kr.facebook.com/kukka.kr/',
-      className: styles.facebook,
     },
     {
       title: 'instagram',
+      image: Instagram,
       to: 'https://www.instagram.com/kukkakorea/',
     },
     {
       title: 'youtube',
+      image: Youtube,
       to: 'https://www.youtube.com/channel/UC_zQakXCUPvjcfsU067zyCQ?view_as=subscriber',
     },
   ];
 
-  const aboutList = [
+  const aboutBusinessList = [
     {
       title: '상호명',
       detail: '꾸까(kukka)',
@@ -41,6 +44,9 @@ export default function Footer({ $target }) {
       title: '대표자',
       detail: '박춘화',
     },
+  ];
+
+  const aboutDetailList = [
     {
       title: '소재지',
       detail: '서울시 서초구 남부순환로333길 10 kukka',
@@ -51,9 +57,6 @@ export default function Footer({ $target }) {
     },
     {
       title: '통신판매신고번호 2018-서울서초-1692',
-    },
-    {
-      title: '© 2014-2021 kukka, Inc. All rights reserved.',
     },
   ];
 
@@ -74,67 +77,59 @@ export default function Footer({ $target }) {
 
   const setIconList = (list) => {
     return `
-    <nav>
       ${list
         .map(
-          ({ title, to }) => `
-        <a href='${to}' target='_blank'>
-          <img src='../../assets/images/${title}.png'>
+          ({ title, image, to }) => `
+        <a href=${to} target=_blank>
+          <img src=${image} alt=${title} class=${styles.nav_icon}>
         </a>
       `,
         )
         .join('')}
-    </nav>
     `;
   };
 
   const setAboutList = (list) => {
     return `
-    <nav>
       ${list
-        .map(({ title, detail }, index) =>
+        .map(({ title, detail }) =>
           detail
             ? detail.substr(0, 4) === 'http'
-              ? `<a href='${detail}' target='_blank'>${title}</a>`
-              : `<span>
-              ${title}: ${detail}
-            </span>`
-            : `<span>${title}</span>`,
+              ? `
+                <a href=${detail} target=_blank>${title}</a>
+                <div class=${styles.about_divider}></div>
+              `
+              : `
+                <span>${title}: ${detail}</span>
+                <div class=${styles.about_divider}></div>  
+              `
+            : `
+              <span>${title}</span>
+              <div class=${styles.about_divider}></div>  
+            `,
         )
-        .join('|')}
-    </nav>
+        .join('')}
     `;
   };
 
   const setTemsList = (list) => {
     return `
-    <nav>
       ${list
         .map(
           ({ title, to }) => `
-        <a href='${to}' target='_blank' class=${styles.tems_item}>
+        <a href=${to} target=_blank class=${styles.tems_item}>
           ${title}
         </a>
       `,
         )
         .join('')}
-    </nav>
     `;
   };
 
-  // this.state = initialState;
-
-  // this.setState = (nextState) => {
-  //   // ..
-  // };
-
-  // const $title = document.createElement('h1');
-  // $title.className = styles.title;
-  // $title.innerHTML = '제목입니다!';
-  // $sample.appendChild($title);
   this.render = () => {
     const iconStatus = setIconList(iconList);
-    const aboutInfo = setAboutList(aboutList);
+    const aboutBusinessInfo = setAboutList(aboutBusinessList);
+    const aboutDetailListInfo = setAboutList(aboutDetailList);
     const temsInfo = setTemsList(temsList);
 
     $footer_wrap.innerHTML = `
@@ -151,20 +146,24 @@ export default function Footer({ $target }) {
             <span class=${styles.contact_partnership}>기업제휴 문의 : 070-4238-8251</span>
           </div>
           <div class=${styles.faq}>
-            <a href='https://kukka.kr/faq/' target='_blank'>꾸까 고객센터 ></a>
+            <a href='https://kukka.kr/faq/' target=_blank>꾸까 고객센터 ></a>
           </div>
           <div class=${styles.logo}>
-            <img src='../../assets/logo_footer' />
+            <img src=${Logo_footer} alt='logo' class=${styles.logo_img} />
           </div>
         </div>
-        <hr />
+        <div class=${styles.hr}></div>
         <div class=${styles.footer_under}> 
           <div class=${styles.sect_about}>
-            ${aboutInfo}
+            ${aboutBusinessInfo}
           </div>
-          <div class=${styles.tems}>
+          <div class=${styles.sect_about}>
+            ${aboutDetailListInfo}
+          </div>
+          <span>© 2014-2021 kukka, Inc. All rights reserved.</span>
+          <nav class=${styles.tems}>
             ${temsInfo}
-          </div>
+          </nav>
         </div>
       </div>
     `;

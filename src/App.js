@@ -6,6 +6,7 @@ import Footer from './modules/Footer/Footer.js';
 export default function App({ $target }) {
   this.state = {};
   const $main = document.createElement('main');
+  $target.appendChild($main);
 
   const gnb = new GNB({
     $target,
@@ -16,6 +17,4 @@ export default function App({ $target }) {
   const footer = new Footer({
     $target,
   });
-
-  $target.appendChild($main);
 }
