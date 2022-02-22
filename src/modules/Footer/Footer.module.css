@@ -27,7 +27,7 @@
   justify-content: start;
 }
 
-.nav_icon {
+.sns_icon {
   width: 32px;
   margin-right: 20px;
 }
@@ -70,6 +70,7 @@
 }
 
 .contact_partnership {
+  width: 100%;
   padding: 5px 0 0;
   font-size: 14px;
   line-height: 20px;
@@ -135,6 +136,10 @@
   display: none;
 }
 
+.about_item {
+  white-space: nowrap;
+}
+
 .about_divider {
   background: #d3d3d3;
   width: 1px;
@@ -157,4 +162,119 @@
   font-weight: 200;
   letter-spacing: -0.21px;
   margin-left: 25px;
+}
+
+@media all and (max-width: 1023px) {
+  .footer {
+    min-width: auto;
+  }
+
+  .footer_wrap {
+    max-width: auto;
+    margin: 0 20px;
+    padding: 0;
+  }
+
+  .footer_inner {
+    padding: 50px 0;
+  }
+
+  .sns_icon {
+    width: 24px;
+  }
+  /* .contact {
+    display: flex;
+    flex-direction: column;
+  } */
+
+  .footer_upper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 8px;
+  }
+
+  .contact_title {
+    font-size: 18px;
+    line-height: 27px;
+    font-weight: 500;
+    letter-spacing: -0.27px;
+  }
+
+  .contact_phone {
+    font-size: 18px;
+    line-height: 27px;
+    letter-spacing: -0.27px;
+    margin: 0;
+  }
+
+  .contact_due {
+    display: block;
+    width: 100%;
+    margin: 0;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 300;
+    letter-spacing: -0.18px;
+  }
+
+  .contact_partnership {
+    display: block;
+    padding: 0;
+    margin-top: 5px;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  .faq {
+    box-sizing: border-box;
+    width: 120px;
+    font-size: 12px;
+    line-height: 36px;
+    font-weight: 300;
+    letter-spacing: -0.18px;
+    margin: 18px 0 0 0;
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .hr {
+    background-color: #787878;
+  }
+
+  .footer_under {
+    display: inline-flex;
+    flex-wrap: wrap;
+    max-width: 767px;
+    margin: 0;
+    margin-bottom: 48px;
+    font-size: 11px;
+    line-height: 19px;
+    font-weight: 300;
+    letter-spacing: -0.17px;
+  }
+
+  .sect_about {
+    margin: 0;
+  }
+
+  .sect_about :last-child {
+    display: inline-block;
+  }
+
+  .tems {
+    right: auto;
+    bottom: 46px;
+    left: 0;
+    margin-top: 24px;
+  }
+
+  .tems_item {
+    font-size: 12px;
+    line-height: 24px;
+    font-weight: 400;
+    letter-spacing: -0.18px;
+    margin: 0 25px 0 0;
+  }
 }

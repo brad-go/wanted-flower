@@ -81,7 +81,7 @@ export default function Footer({ $target }) {
         .map(
           ({ title, image, to }) => `
         <a href=${to} target=_blank>
-          <img src=${image} alt=${title} class=${styles.nav_icon}>
+          <img src=${image} alt=${title} class=${styles.sns_icon}>
         </a>
       `,
         )
@@ -96,15 +96,15 @@ export default function Footer({ $target }) {
           detail
             ? detail.substr(0, 4) === 'http'
               ? `
-                <a href=${detail} target=_blank>${title}</a>
+                <a href=${detail} target=_blank class=${styles.about_item}>${title}</a>
                 <div class=${styles.about_divider}></div>
               `
               : `
-                <span>${title}: ${detail}</span>
+                <span class=${styles.about_item}>${title}: ${detail}</span>
                 <div class=${styles.about_divider}></div>  
               `
             : `
-              <span>${title}</span>
+              <span class=${styles.about_item}>${title}</span>
               <div class=${styles.about_divider}></div>  
             `,
         )
@@ -142,7 +142,6 @@ export default function Footer({ $target }) {
             <h3 class=${styles.contact_title}>꾸까 고객센터</h3>
             <span class=${styles.contact_phone}>1661-1031</span>
             <span class=${styles.contact_due}>(평일 10:00 - 13:00, 14:00 - 18:00 / 주말 & 공휴일 제외)</span>
-            <br />
             <span class=${styles.contact_partnership}>기업제휴 문의 : 070-4238-8251</span>
           </div>
           <div class=${styles.faq}>
