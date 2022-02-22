@@ -9,6 +9,12 @@ export default function App({ $target }) {
   const $main = document.createElement('main');
   $target.appendChild($main);
 
+  window.onload = function () {
+    setTimeout(function () {
+      scrollTo(0, 0);
+    }, 100);
+  };
+
   const getCookie = () => {
     const cookie = document.cookie;
 
@@ -29,7 +35,9 @@ export default function App({ $target }) {
   const setCookie = (name, value, expiredays) => {
     const date = new Date();
     date.setDate(date.getDate() + expiredays);
-    document.cookie = name + '=' + value + '; expires=' + date.toUTCString();
+    const cookieValue =
+      name + '=' + value + '; expires=' + date.toUTCString() + ';';
+    document.cookie = cookieValue + 'SameSite=None; Secure';
   };
 
   const handleOnClose = (target) => {

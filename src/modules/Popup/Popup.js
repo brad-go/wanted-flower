@@ -35,7 +35,6 @@ export default function Popup({ $target, onClose, visible }) {
   this.render();
 
   $popup_wrapper.addEventListener('click', (e) => {
-    console.log(e.target);
     e.stopPropagation();
     if (e.target.tagName === 'BUTTON') {
       onClose('INPUT');

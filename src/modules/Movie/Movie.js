@@ -12,6 +12,6 @@ export default function Movie({ $target }) {
       title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope;"
       allowfullscreen></iframe>
     </div>
-  `
+  `;
   $target.appendChild($section);
 }

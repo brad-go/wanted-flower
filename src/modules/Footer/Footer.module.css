@@ -27,9 +27,17 @@
   justify-content: flex-start;
 }
 
-.sns_icon {
+.sns_square,
+.sns_rectangle {
   width: 32px;
+  min-height: 24px;
   margin-right: 20px;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
 }
 
 .footer_upper {
@@ -179,13 +187,13 @@
     padding: 50px 0;
   }
 
-  .sns_icon {
+  .sns_square {
     width: 24px;
   }
-  /* .contact {
-    display: flex;
-    flex-direction: column;
-  } */
+  .sns_rectangle {
+    width: 33px;
+    height: 24px;
+  }
 
   .footer_upper {
     display: flex;
@@ -210,7 +218,7 @@
   .contact_due {
     display: block;
     width: 100%;
-    margin: 0;
+    margin: 5px 0 0 0;
     font-size: 12px;
     line-height: 18px;
     font-weight: 300;
@@ -219,7 +227,7 @@
 
   .contact_partnership {
     display: block;
-    padding: 0;
+    padding: 5px 0;
     margin-top: 5px;
     font-size: 14px;
     line-height: 20px;

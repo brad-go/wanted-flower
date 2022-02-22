@@ -1,8 +1,8 @@
 import styles from './Footer.module.css';
-import Facebook from '../../assets/images/facebook.png';
-import Instagram from '../../assets/images/instagram.png';
-import Youtube from '../../assets/images/youtube.png';
-import Logo_footer from '../../assets/images/logo_footer.png';
+import Facebook from '../../assets/facebook.png';
+import Instagram from '../../assets/instagram.png';
+import Youtube from '../../assets/youtube.png';
+import Logo_footer from '../../assets/logo_footer.png';
 
 export default function Footer({ $target }) {
   const $footer = document.createElement('footer');
@@ -17,16 +17,19 @@ export default function Footer({ $target }) {
     {
       title: 'facebook',
       image: Facebook,
+      type: 'square',
       to: 'https://ko-kr.facebook.com/kukka.kr/',
     },
     {
       title: 'instagram',
       image: Instagram,
+      type: 'square',
       to: 'https://www.instagram.com/kukkakorea/',
     },
     {
       title: 'youtube',
       image: Youtube,
+      type: 'rectangle',
       to: 'https://www.youtube.com/channel/UC_zQakXCUPvjcfsU067zyCQ?view_as=subscriber',
     },
   ];
@@ -78,12 +81,18 @@ export default function Footer({ $target }) {
   const setIconList = (list) => {
     return `
       ${list
-        .map(
-          ({ title, image, to }) => `
-        <a href=${to} target=_blank>
-          <img src=${image} alt=${title} class=${styles.sns_icon}>
-        </a>
-      `,
+        .map(({ title, image, type, to }) =>
+          type === 'square'
+            ? `
+              <a href=${to} target=_blank>
+                <img src=${image} alt=${title} class=${styles.sns_square}>
+              </a>
+            `
+            : `
+              <a href=${to} target=_blank>
+                <img src=${image} alt=${title} class=${styles.sns_rectangle}>
+              </a>
+            `,
         )
         .join('')}
     `;
