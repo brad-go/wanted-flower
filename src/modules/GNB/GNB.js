@@ -109,7 +109,6 @@ export default function GNB({ $target }) {
     let timer;
     timer = setInterval(() => {
       window.scrollBy(0, 15 * sign);
-      console.log('moving to', sign);
       if ((targetY + document.body.getBoundingClientRect().y) * sign <= 0) {
         clearInterval(timer);
       }
