@@ -1,25 +1,26 @@
 import {
-  BRAND_IMG_MOBILE,
-  BRAND_IMG_PC,
-  SHOWROOM_IMG_MOBILE,
-  SHOWROOM_IMG_PC,
+  BRAND,
+  SHOWROOM,
+  NAV_BTN_COLOR,
+  TRANSTION_CONDITION,
+  MORE,
+  BANNER_TITLE,
 } from '../../constants/bannerData';
 import styles from './Banner.module.css';
 
 export default function Banner({ $target }) {
   const $brandTitle = document.createElement('strong');
   $brandTitle.className = styles.bannerTitle;
-  $brandTitle.innerText = '꾸까 브랜드 이야기';
+  $brandTitle.innerText = BRAND.TITLE;
 
   const $brandText = document.createElement('p');
   $brandText.className = styles.bannerText;
-  $brandText.innerHTML =
-    '꽃으로 라이프스타일을 만들어가는' + '<br />' + 'kukka의 문화를 소개해요.';
+  $brandText.innerHTML = BRAND.TEXT;
 
   const $brandButton = document.createElement('button');
   $brandButton.className = styles.bannerButton;
   $brandButton.classList.add('btn', 'btn-outline-dark');
-  $brandButton.innerText = 'BRAND STORY';
+  $brandButton.innerText = BRAND.BUTTON;
 
   const $brandPhrase = document.createElement('div');
   $brandPhrase.className = styles.bannerPhrase;
@@ -34,17 +35,17 @@ export default function Banner({ $target }) {
   const $brandRealImgMobile = document.createElement('span');
   $brandRealImgMobile.className = styles.bannerRealImgMobile;
   $brandRealImgMobile.classList.add('w-100', 'h-100', 'position-absolute');
-  $brandRealImgMobile.style.backgroundImage = `url(${BRAND_IMG_MOBILE})`;
+  $brandRealImgMobile.style.backgroundImage = `url(${BRAND.IMG_MOBILE})`;
 
   const $brandRealImgPC = document.createElement('span');
   $brandRealImgPC.className = styles.bannerRealImgPC;
   $brandRealImgPC.classList.add('w-100', 'h-100', 'position-absolute');
-  $brandRealImgPC.style.backgroundImage = `url(${BRAND_IMG_PC})`;
+  $brandRealImgPC.style.backgroundImage = `url(${BRAND.IMG_PC})`;
 
   const $brandImg = document.createElement('img');
   $brandImg.className = styles.bannerImg;
   $brandImg.classList.add('w-100', 'h-100', 'position-absolute');
-  $brandImg.src = `${BRAND_IMG_PC}`;
+  $brandImg.src = `${BRAND.IMG_PC}`;
 
   const $brandLink = document.createElement('a');
   $brandLink.className = styles.bannerLink;
@@ -68,19 +69,16 @@ export default function Banner({ $target }) {
 
   const $showRoomTitle = document.createElement('strong');
   $showRoomTitle.className = styles.bannerTitle;
-  $showRoomTitle.innerText = '꾸까 오프라인 쇼룸';
+  $showRoomTitle.innerText = SHOWROOM.TITLE;
 
   const $showRoomText = document.createElement('p');
   $showRoomText.className = styles.bannerText;
-  $showRoomText.innerHTML =
-    '꽃을 가까이서 만져보고 향기도 맡아보고,' +
-    '<br />' +
-    '꽃 속에서 작은 휴식을 누릴 수 있는 kukka의 오프라인 쇼룸';
+  $showRoomText.innerHTML = SHOWROOM.TEXT;
 
   const $showRoomButton = document.createElement('button');
   $showRoomButton.className = styles.bannerButton;
   $showRoomButton.classList.add('btn', 'btn-outline-dark');
-  $showRoomButton.innerText = '꾸까 쇼룸 안내';
+  $showRoomButton.innerText = SHOWROOM.BUTTON;
 
   const $showRoomPhrase = document.createElement('div');
   $showRoomPhrase.className = styles.bannerPhrase;
@@ -96,17 +94,17 @@ export default function Banner({ $target }) {
   const $showRoomRealImgMobile = document.createElement('span');
   $showRoomRealImgMobile.className = styles.bannerRealImgMobile;
   $showRoomRealImgMobile.classList.add('w-100', 'h-100', 'position-absolute');
-  $showRoomRealImgMobile.style.backgroundImage = `url(${SHOWROOM_IMG_MOBILE})`;
+  $showRoomRealImgMobile.style.backgroundImage = `url(${SHOWROOM.IMG_MOBILE})`;
 
   const $showRoomRealImgPC = document.createElement('span');
   $showRoomRealImgPC.className = styles.bannerRealImgPC;
   $showRoomRealImgPC.classList.add('w-100', 'h-100', 'position-absolute');
-  $showRoomRealImgPC.style.backgroundImage = `url(${SHOWROOM_IMG_PC})`;
+  $showRoomRealImgPC.style.backgroundImage = `url(${SHOWROOM.IMG_PC})`;
 
   const $showRoomImg = document.createElement('img');
   $showRoomImg.className = styles.bannerImg;
   $showRoomImg.classList.add('w-100', 'h-100', 'position-absolute');
-  $showRoomImg.src = `${SHOWROOM_IMG_PC}`;
+  $showRoomImg.src = `${SHOWROOM.IMG_PC}`;
 
   const $showRoomLink = document.createElement('a');
   $showRoomLink.className = styles.bannerLink;
@@ -138,7 +136,7 @@ export default function Banner({ $target }) {
 
   const $moreLink = document.createElement('a');
   $moreLink.className = styles.moreLink;
-  $moreLink.innerText = '더보기';
+  $moreLink.innerText = MORE;
 
   const $prevDot = document.createElement('span');
   const $nextDot = document.createElement('span');
@@ -156,13 +154,12 @@ export default function Banner({ $target }) {
   const $carousel = document.createElement('div');
   $carousel.className = styles.carousel;
   $carousel.classList.add('w-100', 'm-0', 'd-block', 'position-relative');
-  $carousel.id = 'carousel';
   $carousel.append($slider, $moreLink, $dots);
 
   const $title = document.createElement('h3');
   $title.className = styles.title;
   $title.classList.add('m-0', 'p-0');
-  $title.innerText = '꾸까 브랜드 스토리';
+  $title.innerText = BANNER_TITLE;
 
   const $header = document.createElement('div');
   $header.className = styles.header;
@@ -192,11 +189,11 @@ export default function Banner({ $target }) {
 
   const fillButton = (num) => {
     if (num % 2 === 0) {
-      btns[0].style.backgroundColor = '#f5ca5f';
-      btns[1].style.backgroundColor = '#e4e4e4';
+      btns[0].style.backgroundColor = NAV_BTN_COLOR.CURRENT;
+      btns[1].style.backgroundColor = NAV_BTN_COLOR.OTHER;
     } else {
-      btns[0].style.backgroundColor = '#e4e4e4';
-      btns[1].style.backgroundColor = '#f5ca5f';
+      btns[0].style.backgroundColor = NAV_BTN_COLOR.OTHER;
+      btns[1].style.backgroundColor = NAV_BTN_COLOR.CURRENT;
     }
   };
 
@@ -215,7 +212,7 @@ export default function Banner({ $target }) {
     setInitialPos();
 
     setTimeout(() => {
-      $track.style.transition = '0.5s ease-out';
+      $track.style.transition = TRANSTION_CONDITION;
     }, 100);
   };
 
@@ -235,7 +232,7 @@ export default function Banner({ $target }) {
     $track.style.transition = 'none';
     setInitialPos();
     setTimeout(() => {
-      $track.style.transition = '0.5s ease-out';
+      $track.style.transition = TRANSTION_CONDITION;
     }, 100);
   };
 
@@ -252,7 +249,7 @@ export default function Banner({ $target }) {
         currentIdx = 0;
       }, 500);
       setTimeout(() => {
-        $track.style.transition = '0.5s ease-out';
+        $track.style.transition = TRANSTION_CONDITION;
       }, 600);
     }
   };
@@ -316,7 +313,7 @@ export default function Banner({ $target }) {
     $track.style.transform = `translateX(${moveX - originPos}px)`;
 
     debouncer = setTimeout(() => {
-      $track.style.transition = '0.5s ease-in';
+      $track.style.transition = TRANSTION_CONDITION;
       if (moveX < -400) {
         moveSlide(currentIdx + 1);
         setInitialPos();
