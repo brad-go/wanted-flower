@@ -1,15 +1,12 @@
+import {
+  BRAND_IMG_MOBILE,
+  BRAND_IMG_PC,
+  SHOWROOM_IMG_MOBILE,
+  SHOWROOM_IMG_PC,
+} from '../../constants/bannerData';
 import styles from './Banner.module.css';
 
 export default function Banner({ $target }) {
-  const BRAND_IMG_MOBILE =
-    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/brand_201225.png';
-  const BRAND_IMG_PC =
-    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/brand_201225_w.png';
-  const SHOWROOM_IMG_MOBILE =
-    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/offline_201225.png';
-  const SHOWROOM_IMG_PC =
-    'https://kukka-2-media-123.s3.amazonaws.com/media/class-name/ContentsTopBanner/2020/12/25/offline_201225_w.png';
-
   const $brandTitle = document.createElement('strong');
   $brandTitle.className = styles.bannerTitle;
   $brandTitle.innerText = '꾸까 브랜드 이야기';
@@ -67,6 +64,7 @@ export default function Banner({ $target }) {
 
   const $brand = document.createElement('div');
   $brand.className = styles.bannerItem;
+  $brand.classList.add('slide');
   $brand.appendChild($brandItem);
 
   const $showRoomTitle = document.createElement('strong');
@@ -128,16 +126,12 @@ export default function Banner({ $target }) {
 
   const $showRoom = document.createElement('div');
   $showRoom.className = styles.bannerItem;
+  $showRoom.classList.add('slide');
   $showRoom.appendChild($showRoomItem);
-
-  const $brandPrev = $brand.cloneNode(true);
-  const $brandNext = $brand.cloneNode(true);
-  const $showRoomPrev = $showRoom.cloneNode(true);
-  const $showRoomNext = $showRoom.cloneNode(true);
 
   const $track = document.createElement('div');
   $track.className = styles.track;
-  $track.id = 'track';
+  $track.append($brand, $showRoom);
 
   const $slider = document.createElement('div');
   $slider.className = styles.slider;
@@ -192,97 +186,81 @@ export default function Banner({ $target }) {
   );
   $banner.append($container);
 
-  const handleResize = () => {
-    if (window.innerWidth < 1024) {
-      const carousel = document.getElementById('carousel');
-      const track = document.getElementById('track');
+  let currentIdx = 0;
+  let slideWidth;
+  const slideItems = $track.children;
+  const slideCount = slideItems.length;
 
-      const slideItems = track.children;
-      const slideWidth = carousel.offsetWidth - 40;
-      const trackLength = track.childNodes.length;
+  const makeClone = () => {
+    for (let i = 0; i < slideCount; i++) {
+      let cloneSlide = slideItems[i].cloneNode(true);
+      cloneSlide.classList.add('clone');
+      $track.appendChild(cloneSlide);
+    }
+    for (let i = slideCount - 1; i >= 0; i--) {
+      let cloneSlide = slideItems[1].cloneNode(true);
+      cloneSlide.classList.add('clone');
+      $track.prepend(cloneSlide);
+    }
+    updateWidth();
+    setInitialPos();
 
-      for (let i = 0; i < trackLength; i++) {
-        slideItems[i].style.width = `${slideWidth}px`;
-      }
-      track.style.width = `${slideWidth * trackLength}px`;
-    } else {
-      if ($brandPrev) {
-        $brandPrev.remove();
-        $brandNext.remove();
-        $showRoomPrev.remove();
-        $showRoomNext.remove();
-      }
+    setTimeout(() => {
+      $track.style.transition = '0.5s ease-out';
+    }, 100);
+  };
+
+  const updateWidth = () => {
+    // const trackWidth = $track.offsetWidth;
+    // const trackLength = $track.children.length;
+    // console.log(trackWidth / $track.children.length - 40);
+    slideWidth = $carousel.offsetWidth - 40;
+    const newSlideLength = $track.children.length;
+
+    for (let i = 0; i < newSlideLength; i++) {
+      slideItems[i].style.width = `${slideWidth}px`;
+    }
+    $track.style.width = `${slideWidth * newSlideLength}px`;
+  };
+
+  const setInitialPos = () => {
+    const initialTransValue = -slideWidth * slideCount;
+    $track.style.transform = `translateX(${initialTransValue}px)`;
+  };
+
+  const moveSlide = (num) => {
+    $track.style.left = `${-num * slideWidth}px`;
+    currentIdx = num;
+    console.log(currentIdx, slideCount);
+    if (currentIdx === slideCount || currentIdx === -slideCount) {
+      setTimeout(() => {
+        $track.style.transition = 'none';
+        $track.style.left = '0px';
+        currentIdx = 0;
+      }, 500);
+      setTimeout(() => {
+        $track.style.transition = '0.5s ease-out';
+      }, 600);
     }
   };
 
-  let currentIdx = 0;
-  let currentSlide = $track.childNodes;
-
   $nextDots.addEventListener('click', () => {
-    const carousel = document.getElementById('carousel');
-    const track = document.getElementById('track');
-    const trackLength = track.childNodes.length;
-    const slideItems = track.children;
-    const slideWidth = carousel.offsetWidth - 40;
-
-    if (currentIdx <= trackLength - 1) {
-      track.style.transition = 300 + 'ms';
-      track.style.transform =
-        'translate3d(-' + slideWidth * (currentIdx + 1) + 'px, 0px, 0px)';
-    }
-    if (currentIdx === trackLength - 1) {
-      setTimeout(() => {
-        track.style.transition = '0ms';
-        track.style.transform = 'translate3d(0px, 0px, 0px)';
-        currentIdx = -1;
-      }, 300);
-      currentIdx = -1;
-    }
-    currentSlide.classList.remove('slideActive');
-    currentSlide = slideItems[++currentIdx];
-    currentSlide.classList.add('slideActive');
+    moveSlide(currentIdx + 1);
   });
 
   $prevDots.addEventListener('click', () => {
-    const carousel = document.getElementById('carousel');
-    const track = document.getElementById('track');
-    const trackLength = track.childNodes.length;
-    const slideWidth = carousel.offsetWidth - 40;
-    if (currentIdx >= 0) {
-      track.style.transition = 300 + 'ms';
-      track.style.transform =
-        'translate3d(-' + slideWidth * currentIdx - 1 + 'px, 0px, 0px)';
-    }
-    if (currentIdx === 0) {
-      setTimeout(() => {
-        track.style.transition = '0ms';
-        track.style.transform =
-          'translate3d(-' + slideWidth * trackLength + 'px, 0px, 0px)';
-      }, 300);
-      currentIdx = trackLength;
-    }
-    curSlide.classList.remove('slide_active');
-    curSlide = slideContents[--currentIdx];
-    curSlide.classList.add('slide_active');
+    moveSlide(currentIdx - 1);
   });
 
   window.addEventListener('load', () => {
-    if (window.innerWidth > 1023) {
-      $track.append($brand, $showRoom);
-    } else {
-      $track.append(
-        $brandPrev,
-        $showRoomPrev,
-        $brand,
-        $showRoom,
-        $brandNext,
-        $showRoomNext,
-      );
-    }
-    handleResize();
+    makeClone();
   });
 
-  window.addEventListener('resize', handleResize);
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 1024) {
+      updateWidth();
+    }
+  });
 
   $target.appendChild($banner);
 }
