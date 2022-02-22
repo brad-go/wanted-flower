@@ -1,8 +1,8 @@
 import styles from './Footer.module.css';
-import Facebook from '../../assets/images/facebook.png';
-import Instagram from '../../assets/images/instagram.png';
-import Youtube from '../../assets/images/youtube.png';
-import Logo_footer from '../../assets/images/logo_footer.png';
+import Facebook from '../../assets/facebook.png';
+import Instagram from '../../assets/instagram.png';
+import Youtube from '../../assets/youtube.png';
+import Logo_footer from '../../assets/logo_footer.png';
 
 export default function Footer({ $target }) {
   const $footer = document.createElement('footer');
