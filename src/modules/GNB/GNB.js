@@ -91,7 +91,7 @@ export default function GNB({ $target }) {
   }
 
   function moveMenu() {
-    if (window.innerWidth < 1024 && getScrollHeight() >= 40) {
+    if (window.innerWidth < 1024 && getScrollHeight() >= 1) {
       $menu.innerHTML = '';
       return;
     }
@@ -99,8 +99,9 @@ export default function GNB({ $target }) {
   }
 
   document.addEventListener('scroll', (e) => {
+    const boundary = window.innerWidth < 1024 ? 1 : 40;
     moveMenu();
-    if (getScrollHeight() >= 40) {
+    if (getScrollHeight() >= boundary) {
       $header.classList.add(styles.scrolled);
       return;
     }
