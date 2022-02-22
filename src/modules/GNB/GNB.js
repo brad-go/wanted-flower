@@ -29,8 +29,8 @@ export default function GNB({ $target }) {
   const $logoAnchor = document.createElement('a');
   $logo.className = styles.logo;
   $logoAnchor.href = '/#';
-  $logo.appendChild($logoAnchor);
-  $wrapper.appendChild($logo);
+  $logoAnchor.appendChild($logo);
+  $wrapper.appendChild($logoAnchor);
 
   const $nav = document.createElement('nav');
   const $iconMenu = document.createElement('nav');

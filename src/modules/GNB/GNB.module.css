@@ -59,11 +59,10 @@ header.scrolled::after {
   position: absolute;
   top: 40px;
   left: 60px;
-  background-image: url('../../assets/kukka.png');
-  background-position: -160px -612px;
+  background-image: url('../../assets/logo_column.png');
+  background-size: cover;
   width: 128px;
   height: 52px;
-  background-size: 1252px 845px;
   margin-top: 20px;
   margin-left: 0; 
 }
@@ -175,20 +174,18 @@ nav {
 
 .myPage::before {
   content: '';
-  background-image: url('../../assets/kukka.png');
-  background-position: -38px -817px;
+  background-image: url('../../assets/icon_person.png');
+  background-size: cover;
   width: 25px;
   height: 28px;
-  background-size: 1252px 845px;
 }
 
 .cart::before {
   content: '';
-  background-image: url('../../assets/kukka.png');
-  background-position: -73px -817px;
+  background-image: url('../../assets/icon_cart.png');
+  background-size: cover;
   width: 25px;
   height: 28px;
-  background-size: 1252px 845px;
 }
 
 .srOnly {
@@ -227,20 +224,16 @@ nav {
     top: 0;
     left: 0;
     margin: 15px 0 0 20px;
-    background-image: url('../../assets/kukka.png');
-    background-size: 626px 422.5px;
+    background-image: url('../../assets/logo_row.png');
     width: 167px;
     height: 22px;
-    background-position: -383px -219px;
   }
 
   .scrolled .logo {
     top: 44px;
-    background-image: url('../../assets/kukka.png');
-    background-size: 626px 422.5px;
+    background-image: url('../../assets/logo_row.png');
     width: 167px;
     height: 22px;
-    background-position: -383px -219px;
   }
 
   .user {
@@ -292,10 +285,7 @@ nav {
   }
 
   .cart::before {
-    background-image: url('../../assets/kukka.png');
-    background-size: 626px 422.5px;
     width: 21px;
     height: 23.5px;
-    background-position: -604px -306px;
   }
 }
