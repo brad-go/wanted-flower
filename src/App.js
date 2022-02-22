@@ -2,6 +2,7 @@ import styles from './global.module.css';
 import Movie from './modules/Movie/Movie.js';
 import GNB from './modules/GNB/GNB.js';
 import FlowerClass from './modules/FlowerClass/FlowerClass.js';
+import Banner from './modules/Banner/Banner.js';
 import Footer from './modules/Footer/Footer.js';
 import Popup from './modules/Popup/Popup.js';
 
@@ -54,6 +55,7 @@ export default function App({ $target }) {
   const flowerClass = new FlowerClass({
     $target: $main,
   });
+  const banner = new Banner({ $target });
   const footer = new Footer({
     $target,
   });
