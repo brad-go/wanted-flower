@@ -290,7 +290,7 @@ export default function Banner({ $target }) {
   };
 
   const dragStart = (e) => {
-    isMouse = true;
+    if (window.innerWidth < 1024) isMouse = true;
     originPos = changeToNumber($track.style.transform);
     startX = e.pageX;
   };

@@ -110,6 +110,7 @@
 
 .bannerLink {
   overflow: hidden;
+  user-select: none;
   pointer-events: none;
 }
 
@@ -128,20 +129,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   z-index: 1;
-}
-
-.bannerRealImgPC {
-  display: inline-block;
-  top: 0;
-  left: 0;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  z-index: 1;
-}
-
-.bannerLink:hover .bannerRealImgPC {
-  transform: scale(1.05);
 }
 
 .bannerPhrase {
@@ -220,8 +207,23 @@
   .bannerImgPc {
     min-height: 150px !important;
   }
+  .bannerRealImgPC {
+    display: inline-block;
+    top: 0;
+    left: 0;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    transition: 0.3s ease-out;
+  }
+
+  .bannerLink:hover .bannerRealImgPC {
+    transform: scale(1.05) !important;
+  }
   .bannerLink {
     text-align: center;
+    pointer-events: all;
   }
   .bannerPhrase {
     align-items: center;
