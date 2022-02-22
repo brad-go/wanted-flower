@@ -5,6 +5,7 @@ import {
   TRANSITION_RESET,
   BORDER_TOP_COLOR,
 } from '../../constants/classData';
+import { FLOWER_CLASS_ID } from '../../constants/id';
 
 export default function Image({ $target }) {
   const $span = document.createElement('span');
@@ -111,6 +112,7 @@ export default function Image({ $target }) {
   $products.append($productList, $moreLink, $btnContainer);
 
   const $flowerClass = document.createElement('section');
+  $flowerClass.id = FLOWER_CLASS_ID;
   $flowerClass.className = styles.flowerClass;
   $flowerClass.appendChild($header);
   $flowerClass.appendChild($products);
