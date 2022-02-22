@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "webpack serve",
-    "build": "webpack -w --mode production"
+    "build": "webpack --mode production"
   },
   "browserslist": [
     "last 1 version",
