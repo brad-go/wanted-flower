@@ -2,13 +2,15 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 module.exports = {
-  mode: 'development',
+  mode: 'production',
   devServer: { static: './dist' },
   entry: './src/index.js',
   output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
     clean: { keep: /\.git/ },
+    assetModuleFilename: 'assets/[hash][ext][query]',
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -38,6 +40,10 @@ module.exports = {
             },
           },
         ],
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
     ],
   },
