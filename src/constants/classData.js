@@ -67,6 +67,10 @@ export const listData = [
   },
 ];
 
+export const THUMBNAIL_TEXT = [
+  '매주 새로운 커리큘럼으로 배우는',
+  '플라워 클래스 자세히 보기',
+];
 export const TRANSITION = 'transform 1s ease-in-out';
 export const TRANSITION_RESET = 'none';
 export const BORDER_TOP_COLOR = '#ececec';
