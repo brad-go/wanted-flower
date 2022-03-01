@@ -328,6 +328,7 @@
   .imgPc {
     display: block;
     width: 100%;
+    transition: all 0.2s ease-in-out;
   }
   .item:not(:first-of-type) .imgPc:hover {
     transform: scale(1.1);
