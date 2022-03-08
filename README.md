@@ -8,7 +8,7 @@
 
 - 팀 프로젝트 (3인)
 - 제작기간: 2021.02.21 ~ 2021.02.24
-- 팀 저장소: https://park-is-best-flower.netlify.app/
+- 팀 저장소: https://github.com/OnBoarding-Park-is-best/week4-flower
 
 <br />
 
